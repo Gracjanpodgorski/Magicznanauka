@@ -997,6 +997,158 @@ body:has(.fox-easy-world) .toast{bottom:auto;top:12px;z-index:150;max-width:340p
  .fox-easy-world .pet-idle-fox{width:clamp(130px,36%,220px)!important}
 }
 
+
+/* ===== Wersja 6.3: Jeden pokój Fikusia. Wszystkie opcje w jednym oknie. ===== */
+.house-world-app{height:100dvh;min-height:520px;overflow:hidden;background:radial-gradient(circle at 15% 15%,#fdf2c9,transparent 36%),linear-gradient(140deg,#f4eaff,#eafaff 70%,#fff1f7)}
+.house-world-main{height:100%;padding:12px!important;max-width:1380px;margin:0 auto}
+.fox-game{height:100%;display:flex;align-items:stretch;justify-content:center}
+.fox-game-inner{width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;background:#fffefb;border:3px solid #fff;border-radius:30px;box-shadow:0 18px 55px rgba(101,71,168,.18)}
+.fox-game-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-shrink:0;min-height:64px;padding:9px 18px;background:linear-gradient(110deg,#faf1ff,#fff8e7,#e9fff9);border-bottom:1px solid #eee5f5}
+.fox-back-home{border:0;background:#fff;border-radius:16px;padding:11px 17px;font-weight:900;color:#7752ba;box-shadow:0 6px 14px #8466b51c;cursor:pointer}
+.fox-game-title{font-size:clamp(16px,2vw,25px);font-weight:1000;color:#584484;letter-spacing:-.4px}
+.fox-game-currency{font-weight:950;border-radius:16px;background:#fff;padding:10px 13px;color:#8b5972;white-space:nowrap;font-size:15px;box-shadow:0 5px 12px #a482a31b}.fox-game-currency span{margin-left:12px;color:#9066a9}
+.fox-main-stage{position:relative;flex:1;min-height:0;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#fff2db,#f3c8ac 78%)}
+.fox-main-stage>.room-background{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;pointer-events:none}
+.fox-scene-item{position:absolute;transform:translate(-50%,-100%);aspect-ratio:180/140;max-height:34%;pointer-events:none;filter:drop-shadow(0 10px 9px rgba(67,45,90,.15));transition:opacity .2s}
+.fox-scene-item svg{width:100%;height:100%;object-fit:contain;display:block}
+.fox-slot-carpet{max-height:26%;filter:drop-shadow(0 4px 3px #4d375233)}
+.fox-main-avatar{position:absolute;z-index:20;left:50%;bottom:9%;width:clamp(180px,27%,310px);aspect-ratio:220/245;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;transform:translateX(-50%);filter:drop-shadow(0 17px 13px rgba(77,48,98,.2));transition:filter .2s}
+.fox-main-avatar:focus-visible{outline:4px solid #b396ff;border-radius:25px}.fox-main-avatar:hover{filter:drop-shadow(0 18px 16px rgba(77,48,98,.33))}
+.fox-main-avatar svg{display:block;width:100%;height:100%;animation:foxGentleBreathe 3.4s ease-in-out infinite}
+.fox-click-tip{position:absolute;bottom:-9%;left:50%;transform:translateX(-50%);background:#fff;white-space:nowrap;border:2px solid #ffddb1;border-radius:999px;color:#9a5683;font-weight:1000;font-size:clamp(12px,1.5vw,19px);padding:10px 18px;box-shadow:0 10px 25px #8159a523;animation:foxTipPulse 2.4s ease-in-out infinite}
+.fox-greeting{position:absolute;z-index:8;top:6%;left:50%;transform:translateX(-50%);max-width:80%;background:rgba(255,255,255,.96);border-radius:23px;border:2px solid #ffecc5;padding:11px 19px;box-shadow:0 12px 23px #8c7c9b24;font-size:clamp(12px,1.8vw,19px);font-weight:900;color:#8d6176;text-align:center}
+.fox-game-footer{min-height:58px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 20px;background:#fffdfd;color:#8a7197;font-weight:800;font-size:13px;border-top:1px solid #eee5f7}
+.fox-needs{display:flex;gap:10px;white-space:nowrap}.fox-needs span{background:#fff5ed;padding:7px 10px;border-radius:99px}
+.fox-act-wrap{position:absolute;inset:0;z-index:40;overflow:hidden}
+.fox-act-wrap .pet-activity-stage{z-index:2}
+.fox-after-action{position:absolute;top:18px;left:18px;z-index:5;border:2px solid #fff;border-radius:19px;background:linear-gradient(135deg,#805fed,#a889f6);color:#fff;font-weight:1000;padding:14px 20px;box-shadow:0 12px 26px #694da03d;cursor:pointer;font-size:15px}
+.fox-popup-layer{position:absolute;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:18px}
+.fox-popup-backdrop{position:absolute;inset:0;border:0;background:rgba(56,36,89,.5);backdrop-filter:blur(4px);cursor:pointer}
+.fox-popup-window{position:relative;z-index:1;width:min(900px,97%);height:min(92%,760px);max-height:100%;min-height:0;background:#fff;border:3px solid #fff;border-radius:28px;box-shadow:0 25px 80px rgba(40,25,76,.35);display:flex;flex-direction:column;overflow:hidden}
+.fox-popup-header{flex:none;display:flex;align-items:center;gap:12px;padding:14px 20px;background:linear-gradient(110deg,#f4eaff,#fff2df,#eafff3)}
+.fox-popup-headicon{font-size:35px}.fox-popup-header>div{flex:1;min-width:0}.fox-popup-header strong{display:block;color:#63458f;font-size:19px}.fox-popup-header small{display:block;color:#806d96;font-size:12px;font-weight:800;margin-top:2px}
+.fox-popup-close{min-width:42px;height:42px;border:0;border-radius:14px;background:#fff;color:#805aba;font-size:20px;font-weight:1000;cursor:pointer}
+.fox-popup-tabs{flex:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;padding:9px 14px;background:#fff}
+.fox-popup-tabs button,.fox-popup-subtabs button{border:1px solid #ede2f5;background:#faf7ff;color:#776292;font-weight:950;border-radius:13px;min-height:46px;padding:9px 4px;cursor:pointer;font-size:clamp(10px,1.4vw,14px)}
+.fox-popup-tabs button.active,.fox-popup-subtabs button.active{background:linear-gradient(135deg,#8668ec,#bd89ef);color:white;border-color:transparent}
+.fox-popup-subtabs{flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:5px 14px;background:#fff}
+.fox-popup-scroll{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:15px 18px 24px;background:#fffcff}
+.fox-modal-intro{text-align:center;color:#685985;font-size:15px;line-height:1.5;font-weight:850;margin:6px 0 17px}
+.fox-care-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;max-width:610px;margin:0 auto}
+.fox-care-choice{min-height:138px;border:2px solid #ebdefa;background:linear-gradient(145deg,#fffaf0,#f2efff);border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;box-shadow:0 10px 20px #a87eaa15}
+.fox-care-choice span{font-size:45px}.fox-care-choice strong{color:#675192;font-weight:1000;font-size:19px}
+.fox-happy-note{margin:21px auto 0;padding:14px;border-radius:17px;background:#effef7;max-width:620px;color:#527f73;font-size:14px;text-align:center;font-weight:750}
+.fox-shop-categories{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:13px;justify-content:center}
+.fox-shop-categories button{background:#fff;border:1px solid #eadcf8;color:#735a98;font-weight:900;border-radius:999px;padding:10px 13px;cursor:pointer}.fox-shop-categories button.selected{background:#8a69ee;color:#fff}
+.fox-catalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px}
+.fox-store-item{display:flex;flex-direction:column;gap:7px;align-items:center;text-align:center;border:1px solid #eae3f5;background:linear-gradient(175deg,#fff,#faf6ff);border-radius:20px;padding:12px;min-height:198px;box-shadow:0 6px 18px #a482af12}
+.fox-store-icon{display:grid;place-items:center;height:75px;font-size:56px}.fox-store-art{display:grid;place-items:center;height:92px;width:100%}.fox-store-art svg{height:92px;width:120px;max-width:100%}
+.fox-store-item strong{font-size:13px;color:#63527e;line-height:1.2}.fox-store-item small{color:#967bb0;font-size:12px;font-weight:850}
+.fox-store-item button{margin-top:auto;border:0;border-radius:12px;background:linear-gradient(135deg,#8765ed,#bc88ea);color:#fff;padding:10px 6px;width:100%;font-size:12px;font-weight:950;cursor:pointer}.fox-store-item button:disabled{background:#ddd6e6;color:#75678a;cursor:default}
+.fox-store-item .fox-outline-btn{margin-top:3px;background:#fff;border:1px solid #c6b3eb;color:#7654af}
+@keyframes foxGentleBreathe{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-7px) scale(1.018)}}
+@keyframes foxTipPulse{0%,100%{box-shadow:0 10px 25px #8159a523}50%{box-shadow:0 10px 28px #a278dd6b}}
+@media(max-width:720px){
+ .house-world-app{min-height:440px}.house-world-main{padding:5px!important}
+ .fox-game-inner{border-radius:21px}
+ .fox-game-toolbar{padding:8px;min-height:54px}.fox-back-home{padding:9px 10px;font-size:12px}.fox-game-title{font-size:16px}.fox-game-currency{padding:8px;font-size:11px}.fox-game-currency span{margin-left:3px}
+ .fox-main-avatar{width:clamp(146px,43%,245px);bottom:11%}.fox-click-tip{font-size:11px;padding:7px 12px}
+ .fox-greeting{top:5%;max-width:92%;font-size:12px;padding:8px 11px}
+ .fox-game-footer{padding:6px 10px;min-height:50px;font-size:10px}.fox-game-footer>span:first-child{max-width:48%}.fox-needs{gap:2px}.fox-needs span{padding:5px;font-size:9px}
+ .fox-popup-layer{padding:7px}.fox-popup-window{width:100%;height:96%;border-radius:18px}
+ .fox-popup-header{padding:10px 12px}.fox-popup-header strong{font-size:15px}.fox-popup-header small{font-size:10px}.fox-popup-headicon{font-size:27px}
+ .fox-popup-tabs{gap:3px;padding:7px}.fox-popup-tabs button{min-height:42px;padding:5px 1px;font-size:10px}.fox-popup-subtabs{gap:3px;padding:4px 7px}.fox-popup-subtabs button{font-size:10px;min-height:39px;padding:4px}
+ .fox-popup-scroll{padding:8px 10px 15px}.fox-modal-intro{font-size:12px;margin:2px 0 10px}
+ .fox-care-grid{gap:9px}.fox-care-choice{min-height:112px;border-radius:15px}.fox-care-choice span{font-size:35px}.fox-care-choice strong{font-size:15px}
+ .fox-catalog{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.fox-store-item{padding:8px;min-height:174px}.fox-store-item strong{font-size:12px}.fox-store-item button{font-size:11px}
+ .fox-after-action{padding:9px 12px;font-size:12px;top:9px;left:9px}
+ .fox-scene-item{max-height:30%}.fox-slot-bigLeft,.fox-slot-bigRight{width:22%!important}
+}
+@media(prefers-reduced-motion:reduce){.fox-main-avatar svg,.fox-click-tip{animation:none!important}}
+
+
+.fox-main-avatar{pointer-events:none!important}
+.fox-main-avatar svg,.fox-main-avatar svg *{pointer-events:none!important}
+.fox-main-hit{position:absolute;z-index:65;left:50%;bottom:9%;transform:translateX(-50%);width:clamp(180px,27%,310px);aspect-ratio:220/245;display:block;padding:0;border:0;background:transparent;cursor:pointer;outline-offset:4px}
+.fox-main-hit:focus-visible{outline:4px solid #b396ff;border-radius:28px}
+@media(max-width:720px){.fox-main-hit{width:clamp(146px,43%,245px);bottom:11%}}
+.house-world-app + .cloud-status{display:none!important}
+
+/* ==== Wersja 6.4: przyjazna nawigacja + odświeżony system wizualny ==== */
+:root{--ink:#2f3558;--muted:#707a9a;--primary:#7557e8;--border:#e6e6f3;--shadow:0 16px 44px rgba(81,78,155,.11)}
+body{background:radial-gradient(ellipse 650px 330px at 13% 5%,#fff2d0 0%,transparent 85%),radial-gradient(ellipse 600px 430px at 100% 28%,#eaf4ff 0%,transparent 85%),linear-gradient(180deg,#fefeff,#f5f5ff 70%,#f8fcff);color:#303654}
+.sidebar{width:246px;background:linear-gradient(180deg,#fff 0%,#f9f5ff 65%,#f8fcff 100%);border-right:1px solid #ece9f7;box-shadow:12px 0 30px rgba(86,82,164,.045)}
+.sidebar .brand{padding-bottom:25px}
+.sidebar .nav{gap:11px}
+.sidebar .nav-item{min-height:55px;border-radius:17px;font-size:16px;font-weight:800;padding:11px 16px;box-shadow:none;border:1px solid transparent}
+.sidebar .nav-item span{font-size:25px}
+.sidebar .nav-item.active{background:linear-gradient(115deg,#755bea,#a36ce8 65%,#ea8bba);color:white;box-shadow:0 14px 26px rgba(119,88,225,.24);border-color:transparent}
+.sidebar .nav-item:not(.active){background:#ffffffad;border:1px solid #eeebfa}
+.sidebar .nav-item:not(.active):hover{background:#f4eeff;transform:translateX(3px)}
+.sidebar-bottom{margin-top:22px;border:1px solid #efe2ff;background:linear-gradient(145deg,#fffae8,#f4f1ff);padding:18px 15px;border-radius:21px}
+.parent-sidebar-link{display:block;border:1px solid #c9c3e8;border-radius:13px;background:#fff;padding:10px 13px;margin-top:13px;color:#61589b;font-weight:800;width:100%;text-align:center;cursor:pointer}
+.topbar{margin:3px 0 24px;border-radius:22px;border:1px solid #ebe7f9;box-shadow:0 12px 27px rgba(91,78,180,.065);padding:12px 18px}
+.topbar-tools{display:flex;align-items:center;gap:12px}
+.parent-shortcut{border:1px solid #e3def7;background:#fff;border-radius:14px;padding:12px 14px;color:#655e89;font-weight:800;cursor:pointer}
+.top-profile{margin:0}
+.wrap{max-width:1180px}
+.kid-welcome,.school-header{display:flex;position:relative;overflow:hidden;align-items:center;justify-content:space-between;gap:15px;padding:35px 38px;border-radius:32px;background:linear-gradient(112deg,#7d62e8 0%,#aa7bea 52%,#ff9db2 100%);color:#fff;box-shadow:0 19px 42px rgba(128,91,220,.17);margin:10px 0 26px}
+.kid-welcome::before,.school-header::before{position:absolute;content:'✦';font-size:120px;right:25%;top:-65px;color:#ffffff19;pointer-events:none}
+.kid-welcome h1,.school-header h1{font-size:clamp(26px,3vw,44px);line-height:1.14;color:white;margin:13px 0;font-weight:950;letter-spacing:-1px}
+.kid-welcome h1 span{display:block;color:#fffbd7}
+.kid-welcome p,.school-header p{font-size:15px;line-height:1.65;color:#fffcff;max-width:550px}
+.kid-eyebrow{background:#ffffff38;border:1px solid #ffffff46;border-radius:999px;padding:8px 13px;font-size:12px;letter-spacing:.7px;font-weight:900}
+.kid-daily{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}
+.kid-daily span{padding:9px 13px;border-radius:999px;background:#ffffffef;color:#5f5897;font-size:13px;font-weight:900}
+.welcome-fox-art{min-width:220px;height:205px;display:grid;place-items:center;position:relative}
+.welcome-fox-glow{display:grid;place-items:center;width:180px;height:180px;font-size:100px;border-radius:50%;background:radial-gradient(circle,#fff5bc,#ffe8ad60 55%,#ffffff22 72%);filter:drop-shadow(0 10px 11px #7040ab35);animation:welcomeFoxFloat 3.1s ease-in-out infinite}
+.fox-micro-star{position:absolute;right:25px;top:18px;font-size:55px;color:#fff4af;animation:twinkle 2s infinite}
+@keyframes welcomeFoxFloat{50%{transform:translateY(-9px) rotate(4deg)}}@keyframes twinkle{50%{opacity:.4;transform:scale(.8)}}
+.kid-choice-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:28px 0 15px}
+.kid-choice-heading h2{font-size:24px;color:#303857;margin:0}.kid-choice-heading span{font-size:12px;color:#8c91a5}
+.kid-three-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.kid-path{border:none;border-radius:27px;padding:25px 24px 20px;min-height:245px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:8px;position:relative;overflow:hidden;box-shadow:0 15px 30px #777db51d;transition:transform .22s ease,box-shadow .22s ease;cursor:pointer;color:#34395c}
+.kid-path::after{content:'';position:absolute;right:-35px;top:-60px;width:150px;height:150px;border-radius:50%;background:#fff9;opacity:.35}
+.kid-path:hover{transform:translateY(-4px);box-shadow:0 20px 35px #777db53a}
+.kid-path.learn-path{background:linear-gradient(155deg,#fff0d5 0%,#ffe1aa 100%)}.kid-path.games-path{background:linear-gradient(155deg,#e8e4ff,#cfc6ff)}.kid-path.fox-path{background:linear-gradient(155deg,#e2fff2,#baf4da)}
+.kid-path-image{font-size:54px;line-height:1.2;filter:drop-shadow(0 7px 8px #ad937345)}
+.kid-path strong{font-size:23px;font-weight:950}.kid-path small{font-size:14px;line-height:1.5;font-weight:550;color:#62657c}
+.kid-path-cta{margin-top:auto;background:#fff;border-radius:999px;padding:9px 14px;font-weight:900;font-size:13px;color:#5d56ac}
+.kid-home-bottom{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:22px}
+.kid-soft-panel{background:#fff;padding:22px 24px;border-radius:23px;border:1px solid #e8e6f4;box-shadow:0 14px 32px #777db515}
+.kid-soft-panel strong{font-size:18px}.kid-soft-panel p{font-size:14px;color:#7d809b;margin:7px 0 16px}
+.school-header{padding:29px 35px;min-height:170px;background:linear-gradient(120deg,#6c64de,#b07eec 63%,#ffb8cf);margin-bottom:23px}
+.school-header h1{font-size:clamp(25px,3vw,37px)}
+.school-book-art{font-size:80px;min-width:120px;filter:drop-shadow(0 15px 13px #6e47ab55);animation:welcomeFoxFloat 4s infinite}.school-book-art span{font-size:42px}
+.school-now{background:linear-gradient(165deg,#fff,#fbf9ff);border:1px solid #e7e1f8;padding:27px;border-radius:27px;box-shadow:0 15px 36px #777db51f}
+.school-now-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.school-now-top h2{font-size:24px;color:#34365b;margin:9px 0 3px}.school-now-top p{font-size:13px;color:#85829a;max-width:700px;line-height:1.5}
+.school-spotlight{font-size:11px;font-weight:950;letter-spacing:1px;color:#8062b6}.school-now-emoji{font-size:57px}
+.school-stage-picker{display:flex;gap:7px;overflow-x:auto;margin:22px 0 9px;padding:4px 0 9px}
+.school-stage-picker button{flex:1;min-width:93px;background:#f5f3ff;color:#6b6597;border:1px solid #e4e0f8;border-radius:16px;padding:10px 7px;display:flex;gap:5px;align-items:center;justify-content:center;flex-direction:column;cursor:pointer}
+.school-stage-picker button b{border-radius:99px;background:#ffffffa9;padding:4px 9px;font-size:13px}.school-stage-picker button span{font-size:11px;line-height:1.2;font-weight:800}
+.school-stage-picker button.active{color:#fff;background:linear-gradient(150deg,#7962e5,#a07ff1);border-color:#7c62e0;box-shadow:0 7px 14px #8e71de38}
+.school-stage-note{color:#7a779d;font-size:13px;margin:10px 0 20px;font-weight:750}
+.school-main-subjects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.school-subject{min-height:146px;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;align-content:center;align-items:center;gap:3px 11px;border:1px solid #e9e7f5;border-radius:21px;text-align:left;padding:21px 15px;background:#fff;box-shadow:0 10px 20px #6d6aa70e;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.school-subject:hover{transform:translateY(-3px);box-shadow:0 15px 25px #7069ab20}
+.school-subject span{font-size:33px;grid-row:1/3;align-self:center}.school-subject strong{font-size:17px;grid-column:2/3;line-height:1.2}.school-subject small{font-size:12px;color:#83869e;grid-column:2/3}.school-subject i{font-style:normal;color:#9074dd;font-size:22px;grid-column:3/4;grid-row:1/3}.school-subject-math{background:linear-gradient(145deg,#fff2d6,#fff9ec);border-color:#f6dfba}
+.school-more-topics{margin-top:18px;border-radius:23px;border:1px solid #e9e6f7;background:#fff;box-shadow:0 12px 28px #777db512;overflow:hidden}
+.school-more-topics summary{padding:19px 23px;cursor:pointer;font-size:16px;font-weight:850;color:#685aaf;list-style-position:inside}
+.school-more-inside{padding:0 23px 23px}.school-more-inside h3{margin:19px 0 9px}
+.school-more-buttons{display:flex;flex-wrap:wrap;gap:10px;padding:10px 17px 20px}.school-more-buttons button{background:#f7f5ff;border:1px solid #e9e5fa;padding:11px 15px;border-radius:14px;color:#58549b;font-weight:800;text-align:left;cursor:pointer}
+.school-source-note{font-size:12px;color:#9a9aad;line-height:1.5;margin:16px 5px}
+.math-easy-choices{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:17px}
+.kid-option{padding:26px;border-radius:22px;background:linear-gradient(160deg,#fff6e6,#fff);border:1px solid #f1dfb9;text-align:left;display:flex;flex-direction:column;gap:10px;cursor:pointer}
+.kid-option:nth-child(2){background:linear-gradient(160deg,#ede9ff,#fff);border-color:#e1d9f8}.kid-option span{font-size:38px}.kid-option strong{font-size:20px}.kid-option small{color:#74758e}
+.parent-hub-title{display:flex;gap:18px;align-items:center;margin-bottom:24px}.parent-hub-title>span{font-size:48px}.parent-hub-title h1{font-size:32px;margin:0;color:#36375b}.parent-hub-title p{font-size:14px;color:#878ca1}
+.parent-hub-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.parent-hub-card{display:flex;flex-direction:column;gap:7px;text-align:left;border:1px solid #e9e6fa;border-radius:23px;background:#fff;padding:22px;cursor:pointer;box-shadow:0 12px 27px #777db512}.parent-hub-card>span{font-size:37px}.parent-hub-card strong{font-size:18px}.parent-hub-card small{color:#878ba1;font-size:13px}
+/* Backward compatible with other screens */
+.tile,.panel,.topic-card{border-radius:22px}.btn{border-radius:15px}.subject-option{min-height:59px}.school-main-subjects button:focus-visible,.kid-path:focus-visible,.parent-hub-card:focus-visible{outline:4px solid #f4b35c;outline-offset:3px}
+@media(max-width:960px){.school-main-subjects{grid-template-columns:repeat(2,minmax(0,1fr))}.kid-three-paths{gap:12px}.kid-path{padding:18px;min-height:230px}.kid-path strong{font-size:19px}.welcome-fox-art{min-width:140px}.welcome-fox-glow{width:145px;height:145px;font-size:76px}}
+@media(max-width:760px){.wrap{padding:13px 13px 100px}.kid-welcome{padding:24px 20px;border-radius:25px;margin-bottom:18px}.kid-welcome h1{font-size:27px}.kid-welcome p{font-size:13px}.welcome-fox-art{min-width:85px;height:110px}.welcome-fox-glow{width:99px;height:99px;font-size:55px}.fox-micro-star{right:0;top:0;font-size:25px}.kid-daily span{font-size:11px;padding:7px 9px}.kid-choice-heading{margin-top:22px}.kid-choice-heading h2{font-size:19px}.kid-choice-heading span{display:none}.kid-three-paths{grid-template-columns:1fr;gap:11px}.kid-path{min-height:124px;border-radius:22px;padding:16px 20px;display:grid;grid-template-columns:76px 1fr;grid-template-rows:auto auto auto;column-gap:16px}.kid-path-image{grid-row:1/4;grid-column:1/2;font-size:43px;align-self:center}.kid-path strong,.kid-path small,.kid-path-cta{grid-column:2/3}.kid-path strong{font-size:20px}.kid-path small{font-size:12px}.kid-path-cta{justify-self:start;margin-top:4px;padding:6px 10px;font-size:12px}.kid-home-bottom{grid-template-columns:1fr;gap:10px;margin-top:14px}.kid-soft-panel{padding:17px}.school-header{padding:21px 18px;border-radius:24px;min-height:135px}.school-header h1{font-size:25px}.school-book-art{min-width:58px;font-size:49px}.school-book-art span{font-size:25px}.school-now{padding:17px;border-radius:21px}.school-now-top h2{font-size:20px}.school-now-emoji{font-size:36px}.school-main-subjects{grid-template-columns:1fr 1fr;gap:9px}.school-subject{min-height:120px;grid-template-columns:1fr auto;grid-template-rows:auto auto auto;gap:4px;padding:14px 11px}.school-subject span{grid-column:1/2;grid-row:1/2;font-size:29px}.school-subject strong{grid-column:1/3;grid-row:2/3;font-size:15px}.school-subject small{grid-column:1/3;grid-row:3/4;font-size:11px}.school-subject i{grid-column:2/3;grid-row:1/2}.school-stage-picker button{min-width:91px}.math-easy-choices{grid-template-columns:1fr}.parent-shortcut{padding:9px 10px}.parent-shortcut span{display:none}.topbar-tools{gap:5px}.topbar{padding:9px 10px;margin-bottom:16px}.top-profile{font-size:12px}.parent-hub-grid{gap:10px}.parent-hub-card{padding:15px;min-height:144px}.parent-hub-card strong{font-size:15px}.mobile-nav{display:flex;justify-content:space-between;gap:0}.mobile-nav button{min-width:0;flex:1;font-size:10px;border-radius:13px}.mobile-nav button span{font-size:22px}.school-more-topics summary{padding:16px}.school-more-buttons{padding:5px 12px 18px}.school-more-buttons button{flex:1 1 150px}}
+@media(max-width:380px){.school-main-subjects{grid-template-columns:1fr 1fr}.school-subject{padding:13px 9px}.kid-welcome h1{font-size:24px}.topbar .brand-mobile-author{display:none}}
+@media(prefers-reduced-motion:reduce){.welcome-fox-glow,.fox-micro-star{animation:none}}
+
 </style></head><body><div id="app"></div><div id="magic-print-output" aria-hidden="true"></div><script>
 (()=>{'use strict';
 const LOCAL_KEY='magiczna_kraina_nauki_animacje_v4',CLOUD_PREFIX='mkpro_user_',CONFIG_KEY='mkpro_cloudconfig_v1',SESSION_KEY='mkpro_session_v1',OLD_KEY='matematyczna_kraina_v1';
@@ -1232,7 +1384,7 @@ function resumeCard(compact=false){let t=pendingTest();if(!t)return '';
 }
 function asProfile(p){return {...p,stats:knownStats(p.stats||{}),activeTest:normalizeTest(p.activeTest),revision:Number(p.revision||0)}}
 function toast(msg){document.querySelector('.toast')?.remove();const d=document.createElement('div');d.className='toast';d.setAttribute('role','status');d.textContent=msg;document.body.appendChild(d);clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>d.remove(),4800)}
-function show(page){if(page!=='house')housePanel='';screen=page;render();window.scrollTo({top:0,behavior:'instant'})}
+function show(page){housePanel='';screen=page;render();window.scrollTo({top:0,behavior:'instant'})}
 async function api(action,params={}){
  const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json','apikey':PUBLIC_KEY},body:JSON.stringify({action,...params})});
  let data;try{data=await r.json()}catch{throw Error('Serwer nie odpowiedział. Sprawdź połączenie internetowe.')}
@@ -1376,7 +1528,8 @@ const HOUSE_MAGIC={
 };
 
 const LEGACY_ROOM={bed_basic:'bedroom',rug_leaf:'bedroom',plant_sprout:'bedroom',wall_stars:'bedroom',lamp_star:'bedroom',shelf_books:'bedroom',rocket_corner:'bedroom',castle_poster:'bedroom',cushion_cloud:'bedroom',toy_chest:'bedroom'};
-function itemRoom(key){return HOUSE_ITEMS[key]?.room||LEGACY_ROOM[key]||'bedroom'}
+function itemRoom(key){return 'bedroom'}
+function foxCatalogRoom(key){return HOUSE_ITEMS[key]?.room||LEGACY_ROOM[key]||'bedroom'}
 function isWallItem(key){return !!HOUSE_ITEMS[key]?.wall||ROOM_WALL_ITEMS.has(key)}
 function itemSize(key){return ROOM_ITEM_SIZE[key]||(['tree','wardrobe','fridge','bookcase','swing','mushroom'].includes(HOUSE_ITEMS[key]?.kind)?23:HOUSE_ITEMS[key]?.kind==='pond'?27:19)}
 const FOX_OUTFITS={classic:{emoji:'🦊',name:'Klasyczny lisek',price:0},wizard:{emoji:'🧙',name:'Czarodziej',price:14},astronaut:{emoji:'👨‍🚀',name:'Astronauta',price:15},royal:{emoji:'👑',name:'Królewski lisek',price:16}};
@@ -1693,19 +1846,11 @@ function foxTargetForItem(key,h){
  return {x:roomClamp(x,16,84),y:roomClamp(y,72,92)};
 }
 function useHouseItem(key){
- const h=ensureHouse();
- if(!HOUSE_ITEMS[key]||!h.placed.includes(key)||itemRoom(key)!==h.room)return;
- const use=houseItemUse(key),target=foxTargetForItem(key,h),origin=h.foxPositions[h.room]??48;
- h.foxPositions[h.room]=+target.x.toFixed(1);
- h.activity={room:h.room,item:key,mode:use.mode,emoji:use.emoji,text:use.text,stamp:Date.now()};
- h.needs=petNeeds(h);
- if(use.mode==='sleep')h.needs.energy=clampNeed(h.needs.energy+14);
- if(['bath','wash','brush'].includes(use.mode))h.needs.joy=clampNeed(h.needs.joy+4);
- if(!['sleep','bath','wash','brush'].includes(use.mode))h.needs.joy=clampNeed(h.needs.joy+6);
- h.playCount=(h.playCount||0)+1;
- addPetLog(h,use.text,use.emoji);
- houseSelection=key;persist();render(true);animateFoxArrival(origin,target.x);
- playSound('good');toast(use.emoji+' '+use.text);
+ const h=ensureHouse();if(!HOUSE_ITEMS[key]||!h.items.includes(key))return;
+ h.room='bedroom';const use=houseItemUse(key);h.activity={room:'bedroom',item:key,mode:use.mode,emoji:use.emoji,text:use.text,stamp:Date.now()};
+ h.needs=petNeeds(h);if(use.mode==='sleep')h.needs.energy=clampNeed(h.needs.energy+14);
+ else if(['bath','wash','brush'].includes(use.mode))h.needs.joy=clampNeed(h.needs.joy+4);else h.needs.joy=clampNeed(h.needs.joy+6);
+ h.playCount=(h.playCount||0)+1;addPetLog(h,use.text,use.emoji);housePanel='';persist();render(true);playSound('good');
 }
 function clearHouseActivity(){const h=ensureHouse();if(h.activity){h.activity=null;persist();}}
 function clampNeed(n){return Math.max(0,Math.min(100,Math.round(Number(n)||0)))}
@@ -1735,18 +1880,11 @@ function buyHouseFood(key){
  toast('🛍️ '+it.name+' jest już w spiżarni!');
 }
 function feedHousePet(key){
- const it=HOUSE_FOODS[key],h=ensureHouse();if(!it)return;
- housePantry(h);const before=h.pantry[key]||0;
- if(before<1){toast('Najpierw kup '+it.name+' w sklepiku.');return}
- h.pantry[key]=before-1;h.room='kitchen';h.needs=petNeeds(h);h.needs.full=clampNeed(h.needs.full+it.restore);h.needs.joy=clampNeed(h.needs.joy+2);
- const origin=h.foxPositions.kitchen??48;
- h.activity={room:'kitchen',item:'pet_bowl',mode:'eat',emoji:it.emoji,text:'Mniam, '+it.name.toLowerCase()+'! Ale pyszne!',food:key,stamp:Date.now()};
- const target=foxTargetForItem(h.placed.includes('pet_bowl')?'pet_bowl':(h.placed.includes('kitchen_table')?'kitchen_table':'fruit_basket'),h);
- h.foxPositions.kitchen=target.x;
- h.feedCount=(h.feedCount||0)+1;housePanel='';houseSelection=null;
- addPetLog(h,'Zjedzono '+it.name,it.emoji);
- persist();render(true);animateFoxArrival(origin,target.x);
- playSound('good');toast('🍽️ Fikuś zajada: '+it.name+'!');
+ const it=HOUSE_FOODS[key],h=ensureHouse();if(!it)return;housePantry(h);const count=h.pantry[key]||0;
+ if(count<1){toast('Najpierw kup '+it.name+' w sklepiku.');return}
+ h.pantry[key]=count-1;h.room='bedroom';h.needs=petNeeds(h);h.needs.full=clampNeed(h.needs.full+it.restore);h.needs.joy=clampNeed(h.needs.joy+2);
+ h.activity={room:'bedroom',item:'pet_bowl',mode:'eat',emoji:it.emoji,text:'Mniam, '+it.name.toLowerCase()+'! Ale pyszne!',food:key,stamp:Date.now()};
+ h.feedCount=(h.feedCount||0)+1;housePanel='';addPetLog(h,'Zjedzono '+it.name,it.emoji);persist();render(true);playSound('good');
 }
 function playHouseMagic(key){
  const it=HOUSE_MAGIC[key],h=ensureHouse();if(!it)return;
@@ -1812,11 +1950,13 @@ function ensureHouse(){
  if(!h.foxPositions||typeof h.foxPositions!=='object'||Array.isArray(h.foxPositions))h.foxPositions={...defaults.foxPositions};
  housePantry(h);petNeeds(h);if(!Array.isArray(h.unlockedMagic))h.unlockedMagic=[];
  if(!Array.isArray(h.log))h.log=[];h.spentStars=Math.max(0,Number(h.spentStars)||0);
- if(!ROOM_INFO[h.room])h.room='bedroom';
+ h.room='bedroom'; // Version 6.3: one shared room; preserve purchases and coins.
  if(!FOX_OUTFITS[h.outfit])h.outfit='classic';
  if(!HOUSE_THEMES[h.theme])h.theme='forest';
  if(!Array.isArray(h.unlockedOutfits))h.unlockedOutfits=['classic'];
- if(!h.activity||typeof h.activity!=='object'||(h.activity.room&&!ROOM_INFO[h.activity.room]))h.activity=null;
+ if(!h.activity||typeof h.activity!=='object')h.activity=null;
+ else if(h.activity.room!=='bedroom')h.activity=null;
+ foxEnsureDisplay(h);
  for(const key of Object.keys(h.positions)){
   const pos=h.positions[key];
   if(!HOUSE_ITEMS[key]||!pos||!Number.isFinite(Number(pos.x))||!Number.isFinite(Number(pos.y)))delete h.positions[key];
@@ -1826,7 +1966,7 @@ function ensureHouse(){
 function ownHouseItem(key){const h=ensureHouse();return h.items.includes(key)}
 function isPlaced(key){const h=ensureHouse();return h.placed.includes(key)}
 function toggleHouseItem(key){const h=ensureHouse();if(!h.items.includes(key))return;if(h.placed.includes(key)){h.placed=h.placed.filter(v=>v!==key);if(h.activity?.item===key)h.activity=null;}else h.placed.push(key);persist();render()}
-function buyHouseItem(key){const h=ensureHouse(),it=HOUSE_ITEMS[key];if(!it||h.items.includes(key))return;ensureCoins();if(profile.stats.coins<it.price){toast('Brakuje '+(it.price-profile.stats.coins)+' monetek. Zdobądź je w grach!');reward('bad');return}profile.stats.coins-=it.price;h.items.push(key);h.placed=[...h.items];h.room=itemRoom(key);h.lastBought=key;h.activity=null;houseSelection=null;housePanel='';persist();reward('good');render(true);toast('🎁 '+it.name+' stoi na swoim miejscu! Dotknij go, aby Fikuś się pobawił.')}
+function buyHouseItem(key){const h=ensureHouse(),it=HOUSE_ITEMS[key];if(!it||h.items.includes(key))return;ensureCoins();if(profile.stats.coins<it.price){toast('Brakuje '+(it.price-profile.stats.coins)+' monetek. Zdobądź je w grach!');return}profile.stats.coins-=it.price;h.items.push(key);h.placed=[...h.items];h.room='bedroom';foxEnsureDisplay(h);h.displaySlots[foxSlotForItem(key)]=key;h.lastBought=key;h.activity=null;housePanel='';persist();reward('good');render(true);toast('🏡 '+it.name+' stoi już na swoim miejscu!')}
 function setHouseTheme(key){const h=ensureHouse();if(HOUSE_THEMES[key]){h.theme=key;persist();render()}}
 function setHouseOutfit(key){const h=ensureHouse(),o=FOX_OUTFITS[key];if(!o)return;ensureCoins();if(key!=='classic'&&h.outfit!==key&&profile.stats.coins<o.price&&!h.unlockedOutfits?.includes(key)){toast('Potrzeba więcej monetek na to przebranie.');reward('bad');return}h.unlockedOutfits=h.unlockedOutfits||['classic'];if(!h.unlockedOutfits.includes(key)){
   if(key!=='classic')profile.stats.coins-=o.price;
@@ -1861,14 +2001,15 @@ function resetDeck(kind){if(kind==='word')wordGame=null;else forestGame=null;ren
 function newCosmos(){cosmosGame={step:0,total:6,tries:0,status:'new',q:easyMathQuestion(),options:gameOptions(0),done:false};cosmosGame.options=gameOptions(cosmosGame.q.answer);return cosmosGame}
 function ensureCosmos(){return cosmosGame||newCosmos()}
 
-function navigation(){return `<aside class="sidebar"><div class="brand"><div class="brand-icon">✦</div><div><strong>Magiczna<br><span>Kraina Nauki</span></strong><br><small>Autor: Gracjan Podgórski</small></div></div><div class="nav-title">ODKRYWAJ</div><nav class="nav">${CATEGORIES.map(([k,e,v])=>`<button class="nav-item ${screen===k?'active':''}" data-act="nav" data-page="${k}" ${screen===k?'aria-current="page"':''}><span>${e}</span>${v}</button>`).join('')}<button class="nav-item" data-act="profiles"><span>🔄</span>Zmień profil</button></nav><div class="sidebar-bottom"><strong>🌟 Wybierz przygodę!</strong><p>Ucz się, zdobywaj monetki i dekoruj swój bajkowy świat.</p></div></aside>`}
-const CATEGORIES=[['home','🏠','Start'],['learn','📚','Uczę się'],['practice','✏️','Ćwiczę'],['house','🏡','Domek Liska'],['games','🎮','Kraina Gier'],['test','📝','Sprawdziany'],['more','🧭','Więcej']];
+function navigation(){return `<aside class="sidebar"><div class="brand"><div class="brand-icon">✦</div><div><strong>Magiczna<br><span>Kraina Nauki</span></strong><br><small>Autor: Gracjan Podgórski</small></div></div><div class="nav-title">MOJA KRAINA</div><nav class="nav">${CATEGORIES.map(([k,e,v])=>`<button class="nav-item ${navActive(k)?'active':''}" data-act="nav" data-page="${k}" ${navActive(k)?'aria-current="page"':''}><span>${e}</span>${v}</button>`).join('')}</nav><div class="sidebar-bottom"><strong>🦊 Witaj, odkrywco!</strong><p>Wybierz jedną przygodę. Wszystkie dodatkowe opcje znajdziesz w „Dla rodzica”.</p><button class="parent-sidebar-link" data-act="nav" data-page="more">⚙️ Dla rodzica</button></div></aside>`}
+const CATEGORIES=[['home','🏠','Start'],['learn','📚','Nauka'],['test','📝','Sprawdzian'],['games','🎮','Gry'],['house','🦊','Fikuś']];
+function navActive(k){return screen===k||(k==='learn'&&['math','lesson','practice','stories','subjects'].includes(screen))||(k==='games'&&['board','memory','shop','cosmos','word','forest'].includes(screen))}
 function exitConfirmDialog(){if(!profile||!exitConfirmOpen)return '';return `<div class="exit-modal" role="presentation"><section class="exit-card" role="dialog" aria-modal="true" aria-labelledby="exit-heading" aria-describedby="exit-description"><div class="exit-fox" aria-hidden="true">🦊💜</div><h2 id="exit-heading">Czy na pewno chcesz zmienić profil?</h2><p id="exit-description">Fikuś może jeszcze z Tobą zostać! Po zmianie profilu trzeba będzie ponownie wpisać PIN.</p><div class="exit-actions"><button type="button" class="btn btn-primary btn-big" data-act="exitStay">🌟 Zostaję i uczę się</button><button type="button" class="btn btn-outline" data-act="exitConfirm">🔄 Tak, zmień profil</button></div></section></div>`}
 function shell(content){if(profile&&screen==='house')return `<div class="house-world-app"><main class="house-world-main">${content}</main>${exitConfirmDialog()}</div><div class="cloud-status" aria-live="polite">${esc(status)}</div><div id="burstLayer" class="burst-layer" aria-hidden="true"></div>`;if(!profile||screen==='admin'||screen==='adminSignup')return `<div class="main"><div class="wrap"><header class="topbar"><span class="eyebrow">✦ Magiczna Kraina Nauki <small style="margin-left:10px">Autor: Gracjan Podgórski</small></span><span class="public-chip">☁️ Wspólna platforma</span></header>${content}<div class="footer">💜 Magiczna Kraina Nauki · Autor: Gracjan Podgórski · Dla klas 1–3 · Bez reklam</div></div></div>`;
- return `<div class="app">${navigation()}<main class="main"><div class="wrap"><header class="topbar"><span class="eyebrow"><span class="brand-mobile-title">✦ Magiczna Kraina Nauki</span><span class="brand-mobile-author">Autor: Gracjan Podgórski</span></span><button class="top-profile" data-act="profiles" title="Zmień dziecko"><span class="avatar">${esc(profile.avatar)}</span>${esc(profile.name)} ▾</button></header>${content}<div class="footer">💜 Magiczna Kraina Nauki · Autor: Gracjan Podgórski · ☁️ Zapis w chmurze · Klasy 1–3</div></div></main><nav class="mobile-nav">${[['home','🏠','Start'],['learn','📚','Nauka'],['practice','✏️','Ćwicz'],['games','🎮','Gry'],['house','🏡','Domek'],['test','📝','Testy'],['more','🧭','Więcej']].map(([k,e,n])=>`<button data-act="${k==='profiles'?'profiles':'nav'}" ${k==='profiles'?'':`data-page="${k}"`} class="${screen===k?'active':''}"><span>${e}</span>${n}</button>`).join('')}</nav>${mascotWidget()}${exitConfirmDialog()}</div><div class="cloud-status" aria-live="polite">${esc(status)}</div><div id="burstLayer" class="burst-layer" aria-hidden="true"></div>`}
+ return `<div class="app">${navigation()}<main class="main"><div class="wrap"><header class="topbar"><span class="eyebrow"><span class="brand-mobile-title">✦ Magiczna Kraina Nauki</span><span class="brand-mobile-author">Autor: Gracjan Podgórski</span></span><div class="topbar-tools"><button class="parent-shortcut" data-act="nav" data-page="more" title="Statystyki, ustawienia i materiały do druku">⚙️ <span>Dla rodzica</span></button><button class="top-profile" data-act="profiles" title="Zmień dziecko"><span class="avatar">${esc(profile.avatar)}</span>${esc(profile.name)} ▾</button></div></header>${content}<div class="footer">💜 Magiczna Kraina Nauki · Autor: Gracjan Podgórski · ☁️ Zapis w chmurze · Klasy 1–3</div></div></main><nav class="mobile-nav">${CATEGORIES.map(([k,e,n])=>`<button data-act="nav" data-page="${k}" class="${navActive(k)?'active':''}"><span>${e}</span>${n}</button>`).join('')}</nav>${mascotWidget()}${exitConfirmDialog()}</div><div class="cloud-status" aria-live="polite">${esc(status)}</div><div id="burstLayer" class="burst-layer" aria-hidden="true"></div>`}
 function profileChooser(){return `<div class="welcome welcome-refreshed">
  <div class="welcome-actions"><button class="btn btn-outline" data-act="printer">🖨️ Karty do druku</button><button class="btn btn-soft" data-act="admin">🔐 Panel administratora</button></div>
- <section class="hero welcome-hero"><div><span class="tag">✨ MATEMATYKA MOŻE BYĆ FRAJDĄ</span><h1>Witaj w Magicznej Krainie Nauki!</h1><p>Wybierz swój obrazek, wpisz PIN i zacznij przygodę z liczbami.</p></div><div class="hero-art" aria-hidden="true">2+3</div></section>
+ <section class="hero welcome-hero"><div><span class="tag">✨ NAUKA MOŻE BYĆ FRAJDĄ</span><h1>Witaj w Magicznej Krainie Nauki!</h1><p>Wybierz swój profil, wpisz PIN i odkrywaj szkolne przygody razem z Fikusiem.</p></div><div class="hero-art" aria-hidden="true">2+3</div></section>
  <div class="section-head profiles-head"><h2>👧👦 Wybierz swój profil</h2><span>${roster.length} ${roster.length===1?'profil':'profili'}</span></div>
  ${lastFetchError?`<div class="security-note fetch-error" role="alert"><strong>⚠️ Nie udało się połączyć z listą profili.</strong><p>${esc(lastFetchError)}</p><button class="btn btn-soft" data-act="reloadRoster">Spróbuj ponownie ↻</button></div>`:''}
  <div class="grid grid3 profile-grid">${roster.map(p=>`<button class="profile-card" data-act="enter" data-id="${esc(p.id)}"><span class="big-avatar">${esc(p.avatar)}</span><strong>${esc(p.name)}</strong><small>${gradeName(p.grade)} · 🔒 Wpisz PIN</small></button>`).join('')}<button class="profile-card add" data-act="newProfile"><span class="big-avatar">➕</span><strong>Nowy profil</strong><small>Wybierz nazwę i PIN</small></button></div>
@@ -1917,8 +2058,124 @@ function mascotMessages(){
 function mascotWidget(){if(!profile||screen==='practice'||screen==='stories'||screen==='test'||(screen==='subjects'&&subjectActivity))return '';const msgs=mascotMessages();const message=msgs[Math.floor(Math.random()*msgs.length)];const mood=mascotMood==='celebrate'?'🦊✨':mascotMood==='oops'?'🦊💡':'🦊';return `<div class="mascot-dock ${mascotOpen?'is-open':''}"><div class="mascot-panel"><strong>${mood} Lisek Fikuś</strong><div>${message}</div><small>Kliknij Liska Fikusia, żeby wejść do jego domku.</small><div class="mascot-settings"><button type="button" data-act="mascotTip">💡 Podpowiedź</button><button type="button" data-act="gameHouse">🏡 Domek</button><button data-act="toggleSound" aria-label="Włącz lub wyłącz dźwięki">${soundEnabled?'🔊 Dźwięk':'🔇 Dźwięk'}</button><button data-act="toggleAnimations" aria-label="Włącz lub wyłącz animacje">${animationsEnabled?'✨ Animacje':'○ Animacje'}</button></div></div><button class="mascot-btn" data-act="gameHouse" aria-label="Otwórz domek Liska Fikusia"><svg class="fox-portrait" width="86" height="86" viewBox="0 0 100 100" role="img" aria-label="Lisek Fikuś"><defs><linearGradient id="fur" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffa04c"/><stop offset="1" stop-color="#f46c43"/></linearGradient></defs><path d="M16 23 L7 1 L39 17 Q50 13 61 17 L93 1 L84 23 Q94 37 90 60 Q86 84 50 92 Q14 84 10 60 Q6 37 16 23" fill="url(#fur)" stroke="#c55032" stroke-width="2"/><path d="M14 18 L12 7 L29 20 M71 20 L88 7 L86 18" fill="#ffc0a8"/><path d="M11 57 Q27 61 31 69 Q40 83 50 89 Q60 83 69 69 Q73 61 89 57 Q76 79 50 92 Q24 79 11 57" fill="#fffaf3"/><circle cx="33" cy="46" r="4.5" fill="#282238"/><circle cx="67" cy="46" r="4.5" fill="#282238"/><circle cx="34" cy="45" r="1.5" fill="#fff"/><circle cx="68" cy="45" r="1.5" fill="#fff"/><path d="M44 64 Q50 60 56 64 L50 71 Z" fill="#422d36"/><path d="M43 73 Q50 78 57 73" fill="none" stroke="#422d36" stroke-width="2" stroke-linecap="round"/></svg></button></div>`}
 function burst(kind,text){const layer=document.getElementById('burstLayer')||document.body;const el=document.createElement('div');el.className=`sparkle-burst ${kind}`;el.innerHTML=`<span class="emoji">${kind==='good'?'✨':'💡'}</span>${text}`;layer.appendChild(el);setTimeout(()=>el.remove(),1300)}
 function reward(kind='good'){mascotMood=kind==='good'?'celebrate':'oops';playSound(kind);if(animationsEnabled){burst(kind,kind==='good'?'Brawo!' : 'Spróbuj jeszcze raz!');document.querySelector('.mascot-btn')?.classList.add('fox-reaction');setTimeout(()=>document.querySelector('.mascot-btn')?.classList.remove('fox-reaction'),750)}}
+
+/* Oryginalne zadania inspirowane tematami planu GWO Lokomotywa 2026/27.
+   Są to NOWE przykłady, nie reprodukcje ćwiczeń wydawnictwa. */
+const SCHOOL_STAGE_NAMES=['Początek roku','Jesienne odkrycia','Zimowe ćwiczenia','Nowe umiejętności','Wielka powtórka'];
+const SCHOOL_LINKS={2:'https://gwo.pl/rozklady-plany-przewodniki-klasa-2/',1:'https://gwo.pl/przedmioty/edukacja-wczesnoszkolna/rozklady-plany-przewodniki/klasa-1/',3:'https://gwo.pl/rozklady-plany-przewodniki-klasa-3/'};
+function schoolStage(){const saved=Number(profile?.stats?.learningStage);return [1,2,3,4,5].includes(saved)?saved:Number(profile?.grade)===2?2:1}
+const SCHOOL_QUESTIONS={
+ reading:[
+ {stage:1,prompt:'Przeczytaj: „Maja schowała zeszyt do plecaka. Potem pobiegła na lekcję.” Co Maja schowała?',options:['Zeszyt','Śniadanie','Piłkę'],answer:0,tip:'Pierwsze zdanie mówi o zeszycie.'},
+ {stage:1,prompt:'„W szkolnej bibliotece są książki o ptakach.” Gdzie są książki?',options:['W bibliotece','Na boisku','W ogrodzie'],answer:0,tip:'Szukamy odpowiedzi na pytanie „gdzie?”.'},
+ {stage:1,prompt:'„Janek podał koleżance zgubioną gumkę.” Co zrobił Janek?',options:['Pomógł koleżance','Zabrał gumkę','Wyszedł z klasy'],answer:0,tip:'Janek okazał życzliwość.'},
+ {stage:2,prompt:'„Nina niosła list do babci. Na kopercie napisała adres.” Co napisała na kopercie?',options:['Adres','Przepis','Wynik zadania'],answer:0,tip:'Adres pomaga dostarczyć list.'},
+ {stage:2,prompt:'„Na drzewie zostały trzy żółte liście. Wiatr poruszał gałęziami.” Jaki kolor miały liście?',options:['Żółty','Czerwony','Zielony'],answer:0,tip:'Kolor był podany na początku.'},
+ {stage:2,prompt:'„Olek ubrał kalosze, bo od rana padał deszcz.” Dlaczego włożył kalosze?',options:['Padał deszcz','Było bardzo gorąco','Chciał grać w piłkę'],answer:0,tip:'Kalosze chronią przed wodą.'},
+ {stage:2,prompt:'„Pani bibliotekarka ułożyła książki na dwóch półkach.” Kto układał książki?',options:['Bibliotekarka','Ogrodnik','Listonosz'],answer:0,tip:'Pytanie dotyczy osoby.'},
+ {stage:2,prompt:'„W piątek klasa posadziła drzewko przed szkołą.” Kiedy dzieci posadziły drzewko?',options:['W piątek','W poniedziałek','W niedzielę'],answer:0,tip:'Zwróć uwagę na nazwę dnia tygodnia.'},
+ {stage:3,prompt:'„Tata zaplanował spacer, ale zaczął padać śnieg. Rodzina wybrała kino.” Dokąd wybrała się rodzina?',options:['Do kina','Nad jezioro','Na basen'],answer:0,tip:'Plan zmienił się z powodu pogody.'},
+ {stage:3,prompt:'„W karmniku były dwa wróble i sikorka. Potem przyleciała jeszcze sikorka.” Jakie ptaki pojawiły się w zdaniu?',options:['Wróble i sikorki','Gołębie i bociany','Kaczki i gęsi'],answer:0,tip:'Szukaj nazw ptaków.'},
+ {stage:4,prompt:'„Amelia zabrała na wycieczkę wodę i mapę. Gdy zgubiła drogę, odczytała oznaczenia na mapie.” Co pomogło Amelii?',options:['Mapa','Parasol','Czapka'],answer:0,tip:'Mapa pomaga znaleźć drogę.'},
+ {stage:5,prompt:'„Po powrocie z wycieczki dzieci wspólnie przygotowały album ze zdjęciami.” Co zrobiły dzieci?',options:['Album','Kanapki','Plan lekcji'],answer:0,tip:'W tekście jest mowa o zdjęciach.'}
+ ],
+ polish:[
+ {stage:1,prompt:'Który wyraz jest imieniem?',options:['Zuzia','zeszyt','szkoła'],answer:0,tip:'Imię piszemy wielką literą.'},
+ {stage:1,prompt:'Wskaż samogłoskę.',options:['a','p','k'],answer:0,tip:'Samogłoski to między innymi a, e, i, o, u, y, ą, ę.'},
+ {stage:1,prompt:'Ile sylab jest w słowie „ka-na-pa”?',options:['3','2','4'],answer:0,tip:'Powiedz powoli: ka-na-pa.'},
+ {stage:1,prompt:'Który wyraz jest nazwą rzeczy?',options:['plecak','idzie','wesoły'],answer:0,tip:'Rzeczownik nazywa m.in. rzeczy.'},
+ {stage:2,prompt:'Wybierz poprawny zapis nazwy miejscowości.',options:['Wrocław','wrocław','Wroclaw'],answer:0,tip:'Nazwy miejscowości zapisujemy wielką literą.'},
+ {stage:2,prompt:'Który wyraz zawiera „rz”?',options:['brzeg','bżeg','bzeg'],answer:0,tip:'Brzeg piszemy przez „rz”.'},
+ {stage:2,prompt:'Wybierz poprawnie zapisane zdanie.',options:['Mama czyta list.','mama czyta list','Mama czyta list'],answer:0,tip:'Zdanie zaczyna się wielką literą i kończy kropką.'},
+ {stage:2,prompt:'Które słowo jest nazwą rośliny?',options:['paprotka','zeszyt','tramwaj'],answer:0,tip:'Roślina może rosnąć w doniczce.'},
+ {stage:2,prompt:'W którym słowie słyszysz „sz”?',options:['szalik','salik','sos'],answer:0,tip:'„sz” to dwuznak.'},
+ {stage:2,prompt:'Jaki znak kończy zdanie „Dokąd idziesz”?',options:['?','.','!'],answer:0,tip:'To pytanie.'},
+ {stage:2,prompt:'Który wyraz należy do rodziny słowa „list”?',options:['listonosz','lustro','lato'],answer:0,tip:'Listonosz dostarcza listy.'},
+ {stage:3,prompt:'Jak zapisać poprawnie wyraz?',options:['góra','gura','goóra'],answer:0,tip:'Góra piszemy przez ó.'},
+ {stage:3,prompt:'Wybierz czasownik.',options:['biegnie','trawa','zielony'],answer:0,tip:'Czasownik odpowiada m.in. na pytanie „co robi?”.'},
+ {stage:4,prompt:'Który wyraz jest przymiotnikiem?',options:['zielony','zieleni','zieleń'],answer:0,tip:'Przymiotnik określa cechę.'},
+ {stage:5,prompt:'Wskaż poprawną pisownię.',options:['pszczoła','pczoła','pszcoła'],answer:0,tip:'Zwróć uwagę na dwuznaki.'}
+ ],
+ nature:[
+ {stage:1,prompt:'Co robimy przed przejściem przez jezdnię?',options:['Rozglądamy się','Biegniemy bez patrzenia','Patrzymy w telefon'],answer:0,tip:'Najpierw upewniamy się, że jest bezpiecznie.'},
+ {stage:1,prompt:'Co jest potrzebne roślinie do wzrostu?',options:['Woda i światło','Tylko ciemność','Pilot'],answer:0,tip:'Rośliny potrzebują wody, światła i powietrza.'},
+ {stage:2,prompt:'Co spada z drzew jesienią?',options:['Liście','Kamienie','Muszelki'],answer:0,tip:'Jesienią wiele drzew zrzuca liście.'},
+ {stage:2,prompt:'Które z tych drzew ma igły?',options:['Sosna','Dąb','Brzoza'],answer:0,tip:'Sosna jest drzewem iglastym.'},
+ {stage:2,prompt:'Jaka część rośliny pobiera wodę z ziemi?',options:['Korzeń','Kwiat','Owoc'],answer:0,tip:'Korzenie rosną w ziemi.'},
+ {stage:2,prompt:'Który ptak często odlatuje na zimę?',options:['Bocian','Wróbel','Sikorka'],answer:0,tip:'Bociany odlatują jesienią do cieplejszych krajów.'},
+ {stage:2,prompt:'Co przedstawia mapa?',options:['Miejsca i drogi','Przepis na ciasto','Tylko pogodę'],answer:0,tip:'Na mapie szukamy różnych miejsc.'},
+ {stage:2,prompt:'Jak nazywa się główny kierunek geograficzny wskazywany przez literę N?',options:['Północ','Południe','Wschód'],answer:0,tip:'N oznacza North — północ.'},
+ {stage:2,prompt:'Który owoc rośnie w polskim sadzie?',options:['Jabłko','Ananas','Kokos'],answer:0,tip:'Jabłonie rosną w sadach.'},
+ {stage:3,prompt:'Kiedy pojawia się szron?',options:['Gdy jest zimno','W upalny dzień','Podczas suszy'],answer:0,tip:'Szron powstaje przy niskich temperaturach.'},
+ {stage:4,prompt:'Jak chronić pszczoły?',options:['Sadzić kwiaty','Niszczyć kwiaty','Zasypywać łąki'],answer:0,tip:'Owady zapylające potrzebują roślin.'},
+ {stage:5,prompt:'Dlaczego segregujemy odpady?',options:['By łatwiej je przetwarzać','Żeby było ich więcej','Żeby mieszać szkło z papierem'],answer:0,tip:'Segregowanie pomaga recyklingowi.'}
+ ],
+ english:[
+ {stage:1,prompt:'What is „book” in Polish?',options:['książka','pies','rower'],answer:0,tip:'Book to książka.'},
+ {stage:1,prompt:'What colour is „yellow”?',options:['żółty','czarny','biały'],answer:0,tip:'Yellow to żółty.'},
+ {stage:2,prompt:'How do you say „szkoła”?',options:['school','house','garden'],answer:0,tip:'School to szkoła.'},
+ {stage:2,prompt:'What does „pencil” mean?',options:['ołówek','kapelusz','kubek'],answer:0,tip:'Pencil to ołówek.'},
+ {stage:2,prompt:'Choose the correct greeting.',options:['Good morning!','Good pencil!','Blue cat!'],answer:0,tip:'Good morning znaczy dzień dobry rano.'},
+ {stage:2,prompt:'What is „seven”?',options:['siedem','osiem','dziewięć'],answer:0,tip:'Seven to siedem.'},
+ {stage:3,prompt:'What does „winter” mean?',options:['zima','wiosna','lato'],answer:0,tip:'Winter to zima.'},
+ {stage:3,prompt:'How do you say „rodzina”?',options:['family','forest','table'],answer:0,tip:'Family oznacza rodzinę.'},
+ {stage:4,prompt:'Choose the sentence about a dog.',options:['I have a dog.','I have a pencil.','I see a car.'],answer:0,tip:'Dog to pies.'},
+ {stage:5,prompt:'What does „I like apples” mean?',options:['Lubię jabłka','Mam jabłka','Jem kanapki'],answer:0,tip:'Like znaczy lubić.'}
+ ],
+ german:[
+ {stage:1,prompt:'Co znaczy niemieckie „Hallo”?',options:['Cześć','Do widzenia','Proszę'],answer:0,tip:'Hallo to przywitanie.'},
+ {stage:1,prompt:'Co oznacza „Danke”?',options:['Dziękuję','Nie','Później'],answer:0,tip:'Danke to dziękuję.'},
+ {stage:2,prompt:'Jak po niemiecku powiedzieć „dom”?',options:['das Haus','der Baum','die Schule'],answer:0,tip:'Haus to dom.'},
+ {stage:2,prompt:'Co znaczy „der Apfel”?',options:['jabłko','gruszka','woda'],answer:0,tip:'Apfel to jabłko.'},
+ {stage:2,prompt:'Jak po niemiecku powiedzieć „jeden”?',options:['eins','drei','fünf'],answer:0,tip:'Eins znaczy jeden.'},
+ {stage:2,prompt:'Które słowo oznacza kolor czerwony?',options:['rot','blau','grün'],answer:0,tip:'Rot to czerwony.'},
+ {stage:3,prompt:'Co oznacza „der Winter”?',options:['zima','lato','jesień'],answer:0,tip:'Winter brzmi podobnie do angielskiego winter.'},
+ {stage:4,prompt:'Co oznacza „lesen”?',options:['czytać','pływać','biegać'],answer:0,tip:'Lesen to czytać.'},
+ {stage:5,prompt:'Co znaczy „Gute Nacht”?',options:['Dobranoc','Dzień dobry','Smacznego'],answer:0,tip:'Nacht to noc.'}
+ ],
+ art:[
+ {stage:2,prompt:'Z czego można uzyskać kolor zielony?',options:['Z żółtego i niebieskiego','Z czerwonego i białego','Z pomarańczowego i czarnego'],answer:0,tip:'Mieszamy farbę żółtą i niebieską.'},
+ {stage:2,prompt:'Który instrument należy do instrumentów perkusyjnych?',options:['Bęben','Flet','Skrzypce'],answer:0,tip:'W bęben można uderzać.'},
+ {stage:3,prompt:'Jak nazywamy krajobraz namalowany przez artystę?',options:['Pejzaż','Portret','Komiks'],answer:0,tip:'Pejzaż pokazuje widok przyrody lub miasta.'}
+ ],
+ coding:[
+ {stage:1,prompt:'Co robimy przed zapisaniem pracy w komputerze?',options:['Nadajemy jej nazwę','Odłączamy kabel','Kasujemy plik'],answer:0,tip:'Plik warto nazwać, aby łatwo go znaleźć.'},
+ {stage:2,prompt:'Który przycisk przenosi kursor do nowej linii?',options:['Enter','Shift','Spacja'],answer:0,tip:'Enter często rozpoczyna nowy wiersz.'}
+ ]
+};
+SUBJECTS.bookmath={name:'Matematyka szkolna',emoji:'🔢',desc:'Zadania do aktualnego etapu nauki',color:'mint'};
+function schoolMathQuestion(){
+ const grade=Number(profile?.grade||2),stage=schoolStage();
+ const max=grade===1?20:grade===2?stage===1?20:stage===2?100:stage===3?30:100:stage<4?100:1000;
+ const taskModes=grade===1?['add','sub','compare','tens']:grade===2?stage===1?['compare','tens','add','sub']:stage===2?['compare','parity','tens','money','add','sub','count']:stage===3?['add','sub','missing','money','count']:stage===4?['mul','div','add','sub','money']:['mul','div','money','add','sub','missing']:['add','sub','mul','div','money','compare','tens'];
+ const mode=pick(taskModes);
+ let prompt='',correct=0,tip='Policz spokojnie i wybierz wynik.';
+ const small=()=>rand(2,Math.min(max,30));
+ if(mode==='parity'){let v=rand(11,99);prompt=`Liczba ${v} jest ...`;const options=['parzysta','nieparzysta','nie jest liczbą'];return answerize(prompt,options,v%2===0?0:1,'Liczba parzysta ma na końcu 0, 2, 4, 6 lub 8.');}
+ if(mode==='tens'){let v=grade===1?rand(10,19):grade===2?rand(20,99):rand(100,999);prompt=`Ile dziesiątek ma liczba ${v}?`;correct=Math.floor(v/10)%10;tip='Spójrz na cyfrę dziesiątek.';}
+ if(mode==='count'){let a=rand(2,7),d=pick([2,5,10]);prompt=`Co będzie dalej: ${a}, ${a+d}, ${a+2*d}, …?`;correct=a+3*d;tip=`Za każdym razem dodaj ${d}.`;}
+ if(mode==='compare'){let a=small(),b=small();if(a===b)b++;prompt=`Która liczba jest większa: ${a} czy ${b}?`;correct=Math.max(a,b);tip='Porównaj dziesiątki, a potem jedności.';}
+ if(mode==='money'){let a=rand(2,stage<=2?12:45),b=rand(1,stage<=2?6:20);prompt=`Fikuś miał ${a+b} zł i kupił jabłka za ${b} zł. Ile zł zostało?`;correct=a;tip='Od całej kwoty odejmij cenę zakupów.';}
+ if(mode==='mul'||mode==='div'){let a=rand(2,stage===4?5:9),b=rand(2,stage===4?5:9);prompt=mode==='mul'?`${a} × ${b} = ?`:`${a*b} ÷ ${b} = ?`;correct=mode==='mul'?a*b:a;tip='Użyj równych grup lub odwrotnego działania.';}
+ if(mode==='add'||mode==='sub'||mode==='missing'){
+   let a,b;
+   if(grade===2&&stage===2){a=rand(10,88);b=rand(1,9);if(a%10===0)a+=rand(1,5);if(mode==='add'){b=Math.min(b,9-(a%10));if(b<1)b=1;a=a%10===9?a-1:a;}else b=Math.min(b,Math.max(1,a%10));}
+   else {a=rand(3,Math.max(4,Math.min(max,grade===1?18:stage===3?24:stage===4?85:150)));b=rand(1,Math.min(12,a));}
+   if(mode==='add'){correct=a+b;prompt=`${a} + ${b} = ?`;tip='Możesz policzyć najpierw pełne dziesiątki.';}
+   else if(mode==='sub'){correct=a-b;prompt=`${a} − ${b} = ?`;tip='Odejmij najpierw kilka, potem resztę.';}
+   else {correct=b;prompt=`${a-b} + □ = ${a}. Jaka liczba pasuje w okienko?`;tip='Pomyśl, ile brakuje do całej liczby.';}
+ }
+ return numericSchoolQuestion(prompt,correct,tip);
+}
+function answerize(prompt,options,index,tip){let arr=options.map((value,i)=>({value,correct:i===index}));shuffle(arr);return {prompt,options:arr.map(o=>o.value),answer:arr.findIndex(o=>o.correct),tip,key:'bookmath',source:'Autorskie zadanie zgodne z zakresem materiału'};}
+function numericSchoolQuestion(prompt,correct,tip){const values=new Set([correct]);let attempts=0;while(values.size<3&&attempts++<40){const v=correct+pick([-10,-5,-3,-2,-1,1,2,3,5,10]);if(v>=0&&v!==correct)values.add(v)}for(let n=1;values.size<3;n++)values.add(correct+n);const opts=shuffle([...values]);return {prompt,options:opts.map(String),answer:opts.indexOf(correct),tip,key:'bookmath',source:'Autorskie zadanie matematyczne'};}
+let subjectSchoolMode=false;
+function startSchoolSubject(key){subjectSchoolMode=true;Object.keys(subjectQuestionDecks).forEach(k=>delete subjectQuestionDecks[k]);startSubject(key,true)}
 function pickSubjectQuestion(key){
- const pool=[...(SUBJECT_LIBRARY[key]||SUBJECT_LIBRARY.reading),...(SUBJECT_BONUS[key]||[])].filter(q=>(q.minGrade||1)<=Number(profile?.grade||2));
+ if(key==='bookmath')return schoolMathQuestion();
+ const grade=Number(profile?.grade||2);const stage=schoolStage();
+ const schoolPool=grade===2?(SCHOOL_QUESTIONS[key]||[]).filter(q=>Number(q.stage||1)<=stage):[];
+ const pool=subjectSchoolMode&&schoolPool.length?schoolPool:[...(SUBJECT_LIBRARY[key]||SUBJECT_LIBRARY.reading),...(SUBJECT_BONUS[key]||[]),...schoolPool].filter(q=>(q.minGrade||1)<=grade);
  if(!pool.length)throw Error('Nie znaleziono pytań w tym przedmiocie.');
  if(!subjectQuestionDecks[key]||!subjectQuestionDecks[key].length)subjectQuestionDecks[key]=shuffle(Array.from({length:pool.length},(_,i)=>i));
  const q=JSON.parse(JSON.stringify(pool[subjectQuestionDecks[key].pop()]));
@@ -1943,7 +2200,7 @@ function nextSubjectQuestion(){
 }
 
 function subjectPage(){const active=SUBJECTS[subjectKey]||SUBJECTS.reading;const stats=profile.stats.subjects||{};const totalDone=Object.values(stats).reduce((n,s)=>n+(s?.total||0),0);const goodDone=Object.values(stats).reduce((n,s)=>n+(s?.good||0),0);const act=subjectActivity&&subjectActivity.q?.key===subjectKey?subjectActivity:null;
- if(act)return `<div class="focused-shell"><div class="focused-top"><button class="back-link" data-act="subjectExit">← Wszystkie przedmioty</button><span class="subject-pill">${active.emoji} ${esc(active.name)}</span></div><div class="focused-card"><div class="focused-top"><div><span class="tag">🌟 Misja ${Math.min(subjectMission.done+1,subjectMission.goal)} z ${subjectMission.goal}</span><h1 class="h1" style="margin:10px 0 0">${esc(active.name)}</h1></div><span class="tag mint">⭐ ${profile.stats.stars} gwiazdek</span></div><div class="lesson-progress" aria-label="Postęp misji"><span style="width:${percent(subjectMission.done,subjectMission.goal)}%"></span></div><p class="muted" style="margin:12px 0"><span class="small-fox" aria-hidden="true">🦊</span> Fikuś Ci kibicuje. Wybierz odpowiedź!</p><div class="question-prose">${esc(act.q.prompt)}</div><div class="subject-options">${act.q.options.map((opt,idx)=>{let cls='subject-option';if(act.status!=='new'&&act.selected===idx&&idx===act.q.answer)cls+=' good';else if(act.status!=='new'&&act.selected===idx&&idx!==act.q.answer)cls+=' bad';else if(act.status==='show'&&idx===act.q.answer)cls+=' good';const disabled=act.status==='good'||act.status==='show';return `<button type="button" class="${cls}" ${disabled?'disabled':''} data-act="subjectAnswer" data-value="${idx}">${esc(opt)}</button>`}).join('')}</div>${act.status==='retry'?`<div class="mascot-encourage" role="status"><span class="small-fox">🦊</span><div><b>Spróbuj jeszcze raz!</b><div>${esc(act.q.tip||'Spójrz jeszcze raz na odpowiedzi.')}</div></div></div>`:''}${act.status==='good'?`<div class="feedback good" role="status"><b>✨ Brawo! ${esc(act.q.tip||'Dobrze Ci poszło.')}</b></div>`:''}${act.status==='show'?`<div class="feedback warn" role="status"><b>💡 Poprawna odpowiedź: ${esc(act.q.options[act.q.answer])}</b><p>${esc(act.q.tip||'Następnym razem będzie łatwiej.')}</p></div>`:''}<div class="actions" style="justify-content:space-between;margin-top:20px"><span class="muted">${subjectMission.good} poprawnych odpowiedzi</span>${act.status==='good'||act.status==='show'?`<button class="btn btn-primary btn-big" data-act="subjectNext">${subjectMission.done>=subjectMission.goal?'🏆 Zakończ misję':'Następne pytanie →'}</button>`:`<span class="anim-note">Wybierz odpowiedź powyżej</span>`}</div></div></div>`;
+ if(act)return `<div class="focused-shell"><div class="focused-top"><button class="back-link" data-act="subjectExit">← Wszystkie przedmioty</button><span class="subject-pill">${active.emoji} ${esc(active.name)}</span></div><div class="focused-card"><div class="focused-top"><div><span class="tag">🌟 ${subjectSchoolMode?'Szkolna misja':'Misja'} ${Math.min(subjectMission.done+1,subjectMission.goal)} z ${subjectMission.goal}</span><h1 class="h1" style="margin:10px 0 0">${esc(active.name)}</h1></div><span class="tag mint">⭐ ${profile.stats.stars} gwiazdek</span></div><div class="lesson-progress" aria-label="Postęp misji"><span style="width:${percent(subjectMission.done,subjectMission.goal)}%"></span></div><p class="muted" style="margin:12px 0"><span class="small-fox" aria-hidden="true">🦊</span> Fikuś Ci kibicuje. Wybierz odpowiedź!</p><div class="question-prose">${esc(act.q.prompt)}</div><div class="subject-options">${act.q.options.map((opt,idx)=>{let cls='subject-option';if(act.status!=='new'&&act.selected===idx&&idx===act.q.answer)cls+=' good';else if(act.status!=='new'&&act.selected===idx&&idx!==act.q.answer)cls+=' bad';else if(act.status==='show'&&idx===act.q.answer)cls+=' good';const disabled=act.status==='good'||act.status==='show';return `<button type="button" class="${cls}" ${disabled?'disabled':''} data-act="subjectAnswer" data-value="${idx}">${esc(opt)}</button>`}).join('')}</div>${act.status==='retry'?`<div class="mascot-encourage" role="status"><span class="small-fox">🦊</span><div><b>Spróbuj jeszcze raz!</b><div>${esc(act.q.tip||'Spójrz jeszcze raz na odpowiedzi.')}</div></div></div>`:''}${act.status==='good'?`<div class="feedback good" role="status"><b>✨ Brawo! ${esc(act.q.tip||'Dobrze Ci poszło.')}</b></div>`:''}${act.status==='show'?`<div class="feedback warn" role="status"><b>💡 Poprawna odpowiedź: ${esc(act.q.options[act.q.answer])}</b><p>${esc(act.q.tip||'Następnym razem będzie łatwiej.')}</p></div>`:''}<div class="actions" style="justify-content:space-between;margin-top:20px"><span class="muted">${subjectMission.good} poprawnych odpowiedzi</span>${act.status==='good'||act.status==='show'?`<button class="btn btn-primary btn-big" data-act="subjectNext">${subjectMission.done>=subjectMission.goal?'🏆 Zakończ misję':'Następne pytanie →'}</button>`:`<span class="anim-note">Wybierz odpowiedź powyżej</span>`}</div></div></div>`;
  return `<section class="edu-intro"><span class="tag">🦊 WYBIERZ SWOJĄ MISJĘ</span><h1 class="h1">Przedmioty szkolne</h1><p class="muted">Wybierz przedmiot, a pytanie pojawi się od razu na ekranie. Możesz ukończyć 10 zadań i dostać gwiazdki.</p><div class="actions"><span class="subject-pill">✔️ ${goodDone} / ${totalDone||0} ukończonych</span><button class="btn btn-primary" data-act="subjectRandom">🎲 Losuj przedmiot</button></div></section><div class="edu-hub">${SUBJECT_KEYS.map(k=>{let t=SUBJECTS[k],st=subjectStats(k);return `<button class="edu-topic" data-act="subjectSelect" data-subject="${k}"><span class="ico">${t.emoji}</span><span><b>${esc(t.name)}</b><small>${esc(t.desc)} · ${st.good||0} poprawnych</small></span></button>`}).join('')}</div><div class="actions section-gap"><button class="btn btn-outline" data-act="nav" data-page="learn">← Wróć do nauki</button></div>`}
 function answerSubject(idx){
  if(!subjectActivity||subjectActivity.status==='good'||subjectActivity.status==='show')return;
@@ -1958,16 +2215,10 @@ function answerSubject(idx){
  persist();reward('bad');render(true);
 }
 
-function heroHome(){let s=profile.stats,day=s.daily[dateKey()]||0;ensureHouse();ensureCoins();return `<section class="hero home-hero"><div><span class="tag">🌟 ${gradeName(profile.grade)} · Cześć, ${esc(profile.name)}!</span><h1>Witaj w bajecznej krainie nauki</h1><p>Zdobywaj gwiazdki i monetki, baw się z Liskiem Fikusiem, urządzaj jego domek i odkrywaj nowe gry edukacyjne.</p><div class="actions"><button class="btn btn-white btn-big" data-act="nav" data-page="practice">✏️ Zacznij ćwiczyć →</button><button class="btn btn-soft btn-big" data-act="nav" data-page="games">🗺️ Otwórz Krainę Gier</button><button class="btn btn-primary btn-big" data-act="gameHouse">🏡 Domek Liska</button></div></div><div class="hero-art" aria-hidden="true">🦊</div></section>
- <div class="stats section-gap"><div class="stat"><strong>${s.stars} ⭐</strong><small>gwiazdek</small></div><div class="stat"><strong>${ensureCoins()} 🪙</strong><small>monetek</small></div><div class="stat"><strong>${day}</strong><small>zadań dziś</small></div><div class="stat"><strong>${(ensureHouse().items||[]).length}</strong><small>ozdób w domku</small></div></div>
- ${resumeCard()}
- <div class="grid grid3 home-adventure-grid"><button class="tile mint" data-act="nav" data-page="learn"><span class="tile-icon">📚</span><strong>Akademia przedmiotów</strong><p>Matematyka, polski, angielski, niemiecki i przyroda.</p></button><button class="tile peach" data-act="nav" data-page="games"><span class="tile-icon">🎮</span><strong>Kraina gier</strong><p>Planszówki, fabryka słów, kosmos i zagadki leśne.</p></button><button class="tile sky" data-act="gameHouse"><span class="tile-icon">🏡</span><strong>Domek Liska Fikusia</strong><p>Kupuj ozdoby, zmieniaj stroje i urządzaj pokój.</p></button></div>
- <div class="home-helper section-gap"><div class="motivation-card"><h3>🦊 Lisek Fikuś motywuje do nauki</h3><p>Fikuś podpowiada, chwali za dobre odpowiedzi i zachęca do kolejnych prób. Teraz możesz także zbierać monetki i wydawać je w bajkowym sklepiku.</p><div class="mini-steps"><div class="mini-step"><span>✨</span><div><strong>Efekty po poprawnych odpowiedziach</strong><div class="anim-note">Szybka nagroda wizualna wzmacnia motywację.</div></div></div><div class="mini-step"><span>🪙</span><div><strong>Nowe monetki</strong><div class="anim-note">Zdobywaj walutę i kupuj ozdoby do domku.</div></div></div><div class="mini-step"><span>🎮</span><div><strong>Więcej gier</strong><div class="anim-note">Każda gra trenuje inną umiejętność.</div></div></div></div></div></div>`}
-function lessonText(t){let m={add:['Dodawanie łączy liczby.','Jeśli masz 27 klocków i dostaniesz 15, możesz policzyć 27 + 10 + 5 = 42.'],sub:['Odejmowanie pokazuje, ile zostaje.','72 − 16 to 72 − 10 − 6 = 56.'],mul:['Mnożenie to szybkie dodawanie równych grup.','4 × 3 = 3 + 3 + 3 + 3 = 12.'],div:['Dzielenie rozkłada rzeczy na równe grupy.','18 ÷ 3 = 6, bo 3 × 6 = 18.'],missing:['Okienko ukrywa jedną liczbę.','□ + 7 = 15, więc □ = 15 − 7 = 8.'],compare:['Najpierw porównuj setki, potem dziesiątki i jedności.','94 jest większe od 89, bo 9 dziesiątek to więcej niż 8.'],series:['Szukaj powtarzającej się zasady.','5, 10, 15, 20… kolejna liczba to 25.'],stories:['Przeczytaj uważnie, co wiadomo i o co pytają.','Gdy Basia miała 50 jabłek i oddała 30, zostaje 50 − 30 = 20.'],money:['Pieniądze można dodawać, odejmować i rozmieniać.','1 złoty = 100 groszy. Zakupy za 8 zł i 5 zł kosztują razem 13 zł.'],clock:['Godzina ma 60 minut, a doba 24 godziny.','Jeśli zajęcia zaczęły się o 9:00 i trwały 2 godziny, skończyły się o 11:00.'],units:['Większe jednostki przeliczamy na mniejsze.','1 metr = 100 centymetrów, 1 kilogram = 100 dekagramów.'],geometry:['Obwód to suma długości wszystkich boków.','Prostokąt o bokach 3 cm i 5 cm ma obwód 3+5+3+5 = 16 cm.'],fraction:['Połowa to jedna z dwóch równych części, ćwierć to jedna z czterech.','Połowa 20 to 10, a ćwierć 20 to 5.'],roman:['Rzymskie cyfry mają własne symbole.','I = 1, V = 5, X = 10. VII = 7, a XII = 12.']};return m[t]||m.add}
-
-function learnPage(){return `<section class="edu-intro"><span class="tag">🦊 FIKUŚ ZAPRASZA</span><h1 class="h1">Czego dziś się nauczymy?</h1><p class="muted">Matematyka i inne przedmioty — wybierz kafelek, a potem krótki temat lub misję.</p></section><div class="edu-group"><div class="section-head"><h2>🌼 Wszystkie przedmioty</h2><span>Wybierz, co ćwiczysz</span></div><div class="edu-hub"><button class="edu-topic math-hero-tile" data-act="nav" data-page="math"><span class="ico">🔢</span><span><b>Matematyka</b><small>Dodawanie, odejmowanie, mnożenie, dzielenie i zadania z życia</small></span><span class="math-tile-arrow">→</span></button>${SUBJECT_KEYS.map(k=>{let t=SUBJECTS[k];return `<button class="edu-topic" data-act="subjectSelect" data-subject="${k}"><span class="ico">${t.emoji}</span><span><b>${esc(t.name)}</b><small>${esc(t.desc)}</small></span></button>`}).join('')}</div></div>`}
-function mathPage(){return `<section class="edu-intro math-intro"><span class="tag peach">🔢 MATEMATYKA Z FIKUŚEM</span><h1 class="h1">Wybierz matematyczną przygodę</h1><p class="muted">Od prostych działań po zadania tekstowe. Wybierz temat i ucz się w swoim tempie.</p><div class="actions"><button class="btn btn-primary" data-act="nav" data-page="practice">✏️ Losowe ćwiczenia</button><button class="btn btn-outline" data-act="nav" data-page="test">📝 Sprawdzian</button></div></section><div class="edu-hub math-hub">${TOPIC_KEYS.map(k=>{let t=TOPICS[k];return `<button class="edu-topic" data-act="lesson" data-topic="${k}"><span class="ico">${t.emoji}</span><span><b>${esc(t.name)}</b><small>${t.min>profile.grade?'Temat dla starszej klasy':esc(t.desc)}</small></span></button>`}).join('')}</div><div class="actions section-gap"><button class="btn btn-outline" data-act="nav" data-page="learn">← Wszystkie przedmioty</button></div>`}
-function morePage(){return `<section class="edu-intro"><span class="tag">🧭 TWOJE NARZĘDZIA</span><h1 class="h1">Więcej możliwości</h1><p class="muted">Znajdziesz tu wyniki, materiały do druku i ustawienia. Gry i Domek Fikusia mają własne zakładki w menu.</p></section><div class="nav-quick"><button class="tile mint" data-act="nav" data-page="progress"><span class="tile-icon">🏆</span><strong>Moje wyniki</strong><p>Moje osiągnięcia i postępy nauki.</p></button><button class="tile" data-act="printer"><span class="tile-icon">🖨️</span><strong>Karty do druku</strong><p>Ćwiczenia i sprawdziany na papier.</p></button><button class="tile peach" data-act="nav" data-page="stories"><span class="tile-icon">📖</span><strong>Zadania z życia</strong><p>Matematyczne historie do rozwiązania.</p></button><button class="tile sky" data-act="profiles"><span class="tile-icon">👧</span><strong>Zmień profil</strong><p>Po potwierdzeniu otworzysz listę dzieci.</p></button></div><div class="panel section-gap"><h3>🎛️ Moje ustawienia</h3><p class="muted">Wybierz, jak wygodnie uczyć się i bawić.</p><div class="actions"><button class="btn btn-outline" data-act="toggleSound">${soundEnabled?'🔊 Dźwięki: włączone':'🔇 Dźwięki: wyłączone'}</button><button class="btn btn-outline" data-act="toggleAnimations">${animationsEnabled?'✨ Animacje: włączone':'🪄 Animacje: wyłączone'}</button></div></div>`}
+function heroHome(){const s=profile.stats;const today=s.daily[dateKey()]||0;ensureCoins();return `<section class="kid-welcome"><div class="kid-welcome-copy"><span class="kid-eyebrow">🌈 MAGICZNA KRAINA NAUKI · ${gradeName(profile.grade)}</span><h1>Hej, ${esc(profile.name)}! <span>Co dziś odkryjemy?</span></h1><p>Wybierz jedną przygodę. Każde ćwiczenie to kolejny krok do nowych umiejętności!</p><div class="kid-daily"><span>⭐ ${s.stars} gwiazdek</span><span>🪙 ${ensureCoins()} monetek</span><span>🌞 ${today} ćwiczeń dziś</span></div></div><div class="welcome-fox-art" aria-hidden="true"><div class="welcome-fox-glow">🦊</div><span class="fox-micro-star">✦</span></div></section>${resumeCard()}<div class="kid-choice-heading"><h2>Wybierz, co chcesz robić</h2><span>Trzy proste możliwości</span></div><div class="kid-three-paths"><button type="button" class="kid-path learn-path" data-act="nav" data-page="learn"><span class="kid-path-image">📚✨</span><strong>Uczę się</strong><small>Przedmioty i zadania z materiału szkolnego</small><span class="kid-path-cta">Zaczynam →</span></button><button type="button" class="kid-path games-path" data-act="nav" data-page="games"><span class="kid-path-image">🎮🌟</span><strong>Gram</strong><small>Zabawne gry z liczbami i słowami</small><span class="kid-path-cta">Wybieram grę →</span></button><button type="button" class="kid-path fox-path" data-act="nav" data-page="house"><span class="kid-path-image">🦊🏡</span><strong>Odwiedzam Fikusia</strong><small>Karmienie, zabawa i sklepik</small><span class="kid-path-cta">Idę do Fikusia →</span></button></div><div class="kid-home-bottom"><div class="kid-soft-panel"><strong>🧠 Krótki trening szkolny</strong><p>Dziesięć pytań w spokojnym tempie, z podpowiedziami.</p><button type="button" class="btn btn-primary" data-act="schoolSubject" data-subject="bookmath">Rozpocznij trening →</button></div><div class="kid-soft-panel"><strong>📝 Czas na sprawdzian?</strong><p>Kiedy poczujesz się gotowa, rozwiąż test i sprawdź wynik.</p><button type="button" class="btn btn-outline" data-act="nav" data-page="test">Otwórz sprawdziany →</button></div></div>`}
+function learnPage(){const grade=Number(profile.grade),stage=schoolStage();const stages=SCHOOL_STAGE_NAMES;return `<section class="school-header"><div><span class="kid-eyebrow">📚 TWOJA SZKOŁA · ${gradeName(grade)}</span><h1>Uczę się krok po kroku</h1><p>Wybierz przedmiot, a Fikuś przygotuje krótkie zadania. Materiał szkolny można dostosować do tego, co aktualnie robi klasa.</p></div><div class="school-book-art" aria-hidden="true">📘<span>✨</span></div></section><section class="school-now"><div class="school-now-top"><div><span class="school-spotlight">⭐ NAUKA WEDŁUG PODRĘCZNIKÓW</span><h2>${grade===2?'Lokomotywa 2 · materiał szkolny':grade===1?'Lokomotywa 1 · materiał szkolny':'Lokomotywa 3 · materiał szkolny'}</h2><p>Autorskie zadania inspirowane programem GWO. Angielski i niemiecki to dodatkowy trening słownictwa — nie odtworzenie stron podręcznika.</p></div><span class="school-now-emoji">🚂</span></div><div class="school-stage-picker" aria-label="Wybierz etap nauki">${stages.map((label,i)=>`<button type="button" data-act="schoolStage" data-stage="${i+1}" class="${stage===i+1?'active':''}" aria-pressed="${stage===i+1}"><b>${i+1}</b><span>${label}</span></button>`).join('')}</div><p class="school-stage-note">${grade===2&&stage===2?'Teraz: liczby dwucyfrowe, porównania, proste zakupy, liczenie.':'Poziom można zmienić w dowolnym momencie — tempo zależy od nauczyciela.'}</p><div class="school-main-subjects"><button type="button" class="school-subject school-subject-math" data-act="schoolSubject" data-subject="bookmath"><span>🔢</span><strong>Matematyka</strong><small>Liczby i zadania</small><i>→</i></button><button type="button" class="school-subject" data-act="schoolSubject" data-subject="polish"><span>✍️</span><strong>Polski</strong><small>Słowa i ortografia</small><i>→</i></button><button type="button" class="school-subject" data-act="schoolSubject" data-subject="reading"><span>📖</span><strong>Czytanie</strong><small>Zrozum tekst</small><i>→</i></button><button type="button" class="school-subject" data-act="schoolSubject" data-subject="nature"><span>🌿</span><strong>Przyroda</strong><small>Poznaj świat</small><i>→</i></button><button type="button" class="school-subject" data-act="schoolSubject" data-subject="english"><span>🇬🇧</span><strong>Angielski</strong><small>Poznaj słówka</small><i>→</i></button><button type="button" class="school-subject" data-act="schoolSubject" data-subject="german"><span>🇩🇪</span><strong>Niemiecki</strong><small>Poznaj słówka</small><i>→</i></button></div></section><details class="school-more-topics"><summary>📚 Zobacz pozostałe przedmioty i wszystkie tematy</summary><div class="school-more-inside"><div class="school-more-buttons">${[['art','🎨 Muzyka i sztuka'],['coding','💻 Informatyka'],['religion','⛪ Religia i wartości']].map(([k,v])=>`<button type="button" data-act="subjectSelect" data-subject="${k}">${v} →</button>`).join('')}</div><h3>Matematyka — wybieram konkretny temat</h3><div class="school-more-buttons"><button type="button" data-act="nav" data-page="math">🧮 Wszystkie działy matematyki →</button><button type="button" data-act="nav" data-page="practice">✏️ Ćwiczenia mieszane →</button><button type="button" data-act="nav" data-page="stories">📖 Zadania z życia →</button></div></div></details><p class="school-source-note">Program orientacyjny: seria GWO „Lokomotywa” dla klas I–III. Etapy nie zastępują planu nauczyciela. Zadania zostały napisane specjalnie dla tej aplikacji.</p>`}
+function mathPage(){return `<section class="school-header"><div><span class="kid-eyebrow">🔢 MATEMATYKA</span><h1>Wybierz sposób liczenia</h1><p>Zacznij od szkolnych przykładów lub wybierz konkretny temat.</p></div><div class="school-book-art" aria-hidden="true">🧮</div></section><div class="math-easy-choices"><button class="kid-option" data-act="schoolSubject" data-subject="bookmath"><span>🚂</span><strong>Ćwicz to, co w szkole</strong><small>Poziom dopasowany do etapu nauki</small></button><button class="kid-option" data-act="nav" data-page="practice"><span>🎲</span><strong>Losowe działania</strong><small>Dodawanie, odejmowanie i więcej</small></button></div><details class="school-more-topics" open><summary>🔢 Wybierz konkretny temat</summary><div class="school-more-buttons math-compact-topics">${TOPIC_KEYS.filter(k=>TOPICS[k].min<=profile.grade).map(k=>`<button type="button" data-act="lesson" data-topic="${k}">${TOPICS[k].emoji} ${TOPICS[k].name} →</button>`).join('')}</div></details><div class="actions section-gap"><button class="btn btn-outline" data-act="nav" data-page="learn">← Wszystkie przedmioty</button></div>`}
+function morePage(){return `<div class="parent-hub"><div class="parent-hub-title"><span>⚙️</span><div><h1>Dla rodzica</h1><p>Wyniki, karty do druku i ustawienia. Dziecko ma tylko pięć głównych zakładek.</p></div></div><div class="parent-hub-grid"><button class="parent-hub-card" data-act="nav" data-page="progress"><span>🏆</span><strong>Postępy dziecka</strong><small>Gwiazdki, wyniki i sprawdziany</small></button><button class="parent-hub-card" data-act="printer"><span>🖨️</span><strong>Karty do druku</strong><small>Wydrukuj oryginalne ćwiczenia</small></button><button class="parent-hub-card" data-act="admin"><span>📊</span><strong>Panel administratora</strong><small>Raporty i aktywność profili</small></button><button class="parent-hub-card" data-act="profiles"><span>🔄</span><strong>Zmień profil</strong><small>Wymaga potwierdzenia wyjścia</small></button></div><div class="panel section-gap"><h3>🎛️ Ustawienia</h3><div class="actions"><button class="btn btn-outline" data-act="toggleSound">${soundEnabled?'🔊 Dźwięki włączone':'🔇 Dźwięki wyłączone'}</button><button class="btn btn-outline" data-act="toggleAnimations">${animationsEnabled?'✨ Animacje włączone':'🪄 Animacje wyłączone'}</button></div><p class="muted" style="font-size:13px;margin-top:12px">Materiały szkolne: <a href="${SCHOOL_LINKS[profile.grade]||SCHOOL_LINKS[2]}" target="_blank" rel="noopener noreferrer">Oficjalny rozkład materiału GWO dla klasy ${profile.grade} ↗</a>. Pytania w aplikacji są autorskie.</p></div><div class="actions section-gap"><button class="btn btn-outline" data-act="nav" data-page="home">← Wróć do startu</button></div></div>`}
 function lessonPage(){let t=TOPICS[topic],l=lessonText(topic);return `<h1 class="h1">${t.emoji} ${t.name}</h1><p class="muted">Klasa ${t.min}+ · Poznaj prostą zasadę i sprawdź ją w zadaniach.</p><div class="panel stack"><div class="question-box"><span style="font-size:56px">${t.emoji}</span><h2>${l[0]}</h2><p class="question-prose" style="font-size:19px">${l[1]}</p></div><div class="lesson">💡 <b>Wskazówka:</b> Zaczynaj od prostszych przykładów. Jeśli nie znasz odpowiedzi, spróbuj narysować sytuację lub rozbić liczby na mniejsze części.</div><div class="actions"><button class="btn btn-primary btn-big" data-act="beginLesson">Przećwicz ten temat →</button><button class="btn btn-quiet" data-act="nav" data-page="learn">← Wszystkie lekcje</button></div></div>`}
 function topicPicker(){return `<div class="topic-list"><button class="topic-card ${topic==='mixed'?'active':''}" data-act="topic" data-topic="mixed"><span class="emoji">🎲</span><span><strong>Wszystkie tematy</strong><small>Losowe, odpowiednie do klasy</small></span></button>${allowedKeys(profile.grade).map(k=>`<button class="topic-card ${topic===k?'active':''}" data-act="topic" data-topic="${k}"><span class="emoji">${TOPICS[k].emoji}</span><span><strong>${TOPICS[k].name}</strong><small>Klasa ${TOPICS[k].min}+</small></span></button>`).join('')}</div>`}
 function shapeSVG(q){if(!q.shape)return '';let shape=q.shape,body=shape==='square'?'<rect x="55" y="20" width="110" height="110" rx="2"/>':shape==='rect'?'<rect x="25" y="34" width="170" height="88" rx="2"/>':'<polygon points="110,20 30,135 190,135"/>';let labels=shape==='rect'?`<text x="110" y="20">${q.sideA} cm</text><text x="205" y="86">${q.sideB} cm</text>`:`<text x="110" y="153">${q.sideA} cm</text>`;return `<div class="q-visual"><svg width="245" height="165" viewBox="0 0 245 165" role="img" aria-label="Figura geometryczna z oznaczonymi bokami"><g stroke="#836be5" stroke-width="3" fill="#e8e2ff">${body}</g><g font-family="Nunito,sans-serif" font-size="15" font-weight="900" text-anchor="middle" fill="#4f44a3">${labels}</g></svg></div>`}
@@ -2101,6 +2352,8 @@ function easyMathQuestion(){const limit=profile.grade===1?15:profile.grade===2?2
 function gameOptions(correct){const a=new Set([correct]);for(let i=0;i<80&&a.size<3;i++){const v=correct+rand(-7,7);if(v>=0&&v!==correct)a.add(v)}for(let i=0;a.size<3;i++)a.add(correct+i+1);return shuffle([...a]);}
 function boardState(){if(!profile.stats.board||typeof profile.stats.board!=='object')profile.stats.board={pos:0,wins:0,question:null,dice:0,tries:0,feedback:''};return profile.stats.board}
 function gameHub(){let s=profile.stats;ensureHouse();ensureCoins();return `<div class="fun-hero magical-games"><span class="tag">✨ BAJECZNA STREFA ZABAWY</span><h1>🗺️ Kraina gier Liska Fikusia</h1><p>Graj, rozwiązuj zadania i zdobywaj monetki do domku. Każda zabawa rozwija inne umiejętności.</p><div class="actions"><span class="tag peach">🪙 ${ensureCoins()} monetek</span><span class="tag mint">⭐ ${s.stars} gwiazdek</span></div></div><div class="grid grid3"><button class="tile mint" data-act="gameBoard"><span class="tile-icon">🏰</span><strong>Zamek liczb</strong><p>Rzuć kostką i otwieraj kolejne komnaty zamku.</p><span class="tile-link">Graj →</span></button><button class="tile sky" data-act="gameMemory"><span class="tile-icon">🧠</span><strong>Memory z działaniami</strong><p>Znajdź pary: zadanie i poprawny wynik.</p><span class="tile-link">Graj →</span></button><button class="tile peach" data-act="gameShop"><span class="tile-icon">🛒</span><strong>Magiczny sklepik</strong><p>Policz resztę i zostań mistrzem zakupów.</p><span class="tile-link">Graj →</span></button><button class="tile sky" data-act="gameCosmos"><span class="tile-icon">🚀</span><strong>Kosmiczna misja</strong><p>Leć od planety do planety dzięki dobrym odpowiedziom.</p><span class="tile-link">Start →</span></button><button class="tile mint" data-act="gameWords"><span class="tile-icon">🔤</span><strong>Fabryka słów</strong><p>Polski przez zabawę: wyrazy, litery i sylaby.</p><span class="tile-link">Wejdź →</span></button><button class="tile peach" data-act="gameForest"><span class="tile-icon">🌳</span><strong>Leśne zagadki</strong><p>Przyroda, pory roku i pytania o świat.</p><span class="tile-link">Odkrywaj →</span></button></div><div class="panel section-gap"><div class="section-head"><h3>🏅 Twoje przygody</h3><span>Uczysz się przez zabawę!</span></div><div class="stats"><div class="stat"><strong>${s.board?.wins||0}</strong><small>wypraw do zamku</small></div><div class="stat"><strong>${s.memoryWins||0}</strong><small>ukończonych memory</small></div><div class="stat"><strong>${s.cosmosWins||0}</strong><small>misji w kosmosie</small></div><div class="stat"><strong>${(s.wordWins||0)+(s.forestWins||0)}</strong><small>serii językowych i leśnych</small></div></div></div>`}let housePanel='';
+let foxShopCategory='all';
+let foxShopSection='furniture';
 
 let petEditMode=false;
 function petFaceSvg(sleep=false){
@@ -2152,18 +2405,13 @@ function petActionArt(activity,h){
  return `<div class="pet-activity-stage ${o.cls}" role="img" aria-label="${title}"><div class="pet-action-stars"><span>✨</span><span>⭐</span><span>✦</span></div><div class="pet-action-fox">${foxSvg(h.outfit)}</div><div class="pet-action-prop" aria-hidden="true">${o.emoji}</div><div class="pet-action-bubble">${o.word}</div><div class="pet-activity-caption">${title}</div></div>`;
 }
 function petSetAction(mode){
- const h=ensureHouse();petEditMode=false;houseSelection=null;housePanel='';
+ const h=ensureHouse();housePanel='';h.room='bedroom';
  if(mode==='feed'){housePanel='food';render(true);return}
- let key=null,room=h.room;
- if(mode==='sleep'){room='bedroom';key=h.placed.includes('bed_basic')?'bed_basic':null}
- else if(mode==='bath'){room='bathroom';key=h.placed.includes('bubble_bath')?'bubble_bath':null}
- else if(mode==='play'){room='living';key=h.placed.find(k=>itemRoom(k)==='living'&&['play','piano','paint','dance','hug','music'].includes(houseItemUse(k).mode))||null}
- h.room=room;
- if(key){persist();useHouseItem(key);return}
- const wording={sleep:{emoji:'💤',text:'Fikuś zasypia pod miękką kołderką.'},bath:{emoji:'🛁',text:'Fikuś pluska się w bąbelkowej kąpieli.'},play:{emoji:'🎾',text:'Fikuś bawi się wesoło ze swoją piłeczką!'}};
- const a=wording[mode]||wording.play;h.activity={room:h.room,item:null,mode,emoji:a.emoji,text:a.text,stamp:Date.now()};
- h.needs=petNeeds(h);if(mode==='sleep')h.needs.energy=clampNeed(h.needs.energy+14);
- else h.needs.joy=clampNeed(h.needs.joy+(mode==='bath'?4:7));
+ const choose=mode==='sleep'?(h.items.includes('bed_basic')?'bed_basic':null):mode==='bath'?(h.items.includes('bubble_bath')?'bubble_bath':null):mode==='play'?h.items.find(k=>['play','piano','paint','dance','hug','music'].includes(houseItemUse(k).mode)):null;
+ if(choose){useHouseItem(choose);return}
+ const a={sleep:{mode:'sleep',emoji:'💤',text:'Fikuś śpi pod miękką kołderką.'},bath:{mode:'bath',emoji:'🫧',text:'Fikuś pluska się w bąbelkach!'},play:{mode:'play',emoji:'🎾',text:'Fikuś bawi się kolorową piłeczką!'}}[mode];if(!a)return;
+ h.activity={room:'bedroom',item:null,...a,stamp:Date.now()};h.needs=petNeeds(h);
+ if(mode==='sleep')h.needs.energy=clampNeed(h.needs.energy+14);else h.needs.joy=clampNeed(h.needs.joy+(mode==='bath'?5:8));
  addPetLog(h,a.text,a.emoji);persist();render(true);playSound('good');
 }
 function petFeedOneTap(key){
@@ -2177,48 +2425,95 @@ function petStartArrange(){
 }
 function petFinishArrange(){petEditMode=false;houseSelection=null;render(true)}
 
-function houseDrawer(h,room,owned,placed,outfits){
- if(!housePanel)return '';
- const pantry=housePantry(h);
- let p=housePanel;
- if(p==='inventory')p='shop';
- if(p==='style'||p==='magic')p='extras';
- const tabs=[['food','🍓 Jedzenie'],['shop','🪑 Meble'],['wardrobe','👗 Stroje'],['extras','✨ Dodatki']];
- const tabBar=tabs.map(([key,label])=>`<button type="button" class="pet-shop-tab ${p===key?'active':''}" data-act="houseDrawer" data-panel="${key}" aria-pressed="${p===key}">${label}</button>`).join('');
- let content='';
- if(p==='food'){
-  content=`<div class="pet-shop-banner">🍎 <b>Jedzenie dla Fikusia</b><small>Jeden przycisk: podaj przysmak. Jeśli go nie masz, kupisz go od razu za monetki.</small></div><div class="pet-shop-grid">${Object.entries(HOUSE_FOODS).map(([key,f])=>{const qty=pantry[key]||0,possible=qty>0||ensureCoins()>=f.price;return `<div class="pet-shop-item"><div class="pet-shop-emoji">${f.emoji}</div><b>${esc(f.name)}</b><span>${qty?'🥣 W spiżarni: '+qty:'🪙 '+f.price+' monetek'}</span><button type="button" class="pet-shop-buy" data-act="petFeedOneTap" data-food="${key}" ${!possible?'disabled':''}>${qty?'🍽️ Nakarm':'🛍️ Kup i nakarm'}</button></div>`}).join('')}</div>`;
- }else if(p==='shop'){
-  content=`<div class="pet-shop-banner">🏡 <b>Wybierz meble do domku</b><small>Kupujesz raz, a mebel od razu stoi na swoim miejscu. Niczego nie przesuwasz!</small></div><nav class="pet-shop-roomtabs">${Object.entries(ROOM_INFO).map(([key,r])=>`<button type="button" data-act="houseRoom" data-room="${key}" class="${room===key?'active':''}">${r.emoji} ${r.name}</button>`).join('')}</nav><div class="pet-shop-grid">${Object.entries(HOUSE_ITEMS).filter(([k])=>itemRoom(k)===room).sort(([ka,a],[kb,b])=>Number(owned.has(ka))-Number(owned.has(kb))||a.price-b.price).map(([key,it])=>{const isOwned=owned.has(key),canPay=ensureCoins()>=it.price;return `<div class="pet-shop-item"><div class="pet-shop-graphic">${itemSvg(key)}</div><b>${esc(it.name)}</b><span>${isOwned?'✅ Już kupione':'🪙 '+it.price+' monetek'}</span><button type="button" class="pet-shop-buy" data-act="${isOwned?'petShowOwned':'houseBuy'}" data-item="${key}" ${!isOwned&&!canPay?'disabled':''}>${isOwned?(placed.has(key)?'🦊 Użyj':'🏡 Zobacz w pokoju'):(canPay?'🛍️ Kup':'🔒 Zbierz monetki')}</button></div>`}).join('')}</div>`;
- }else if(p==='wardrobe'){
-  content=`<div class="pet-shop-banner">🎩 <b>Przebierz Fikusia</b><small>Wybierz strój i zobacz go od razu na swoim liskiem.</small></div><div class="pet-shop-grid">${Object.entries(FOX_OUTFITS).map(([key,it])=>`<div class="pet-shop-item"><div class="pet-shop-emoji">${it.emoji}</div><b>${esc(it.name)}</b><span>${outfits.includes(key)?'✅ Masz ten strój':'🪙 '+it.price+' monetek'}</span><button class="pet-shop-buy" type="button" data-act="houseOutfit" data-outfit="${key}">${h.outfit===key?'✓ Ubrany':'Wybierz'}</button></div>`).join('')}</div>`;
- }else {
-  content=`<div class="pet-shop-banner">🌈 <b>Kolory i magia</b><small>Zmieniaj ściany i wykorzystuj zdobyte gwiazdki do zabawy.</small></div><div class="pet-shop-grid">${Object.entries(HOUSE_THEMES).map(([key,it])=>`<div class="pet-shop-item"><div class="pet-shop-emoji">${it.emoji}</div><b>${esc(it.name)}</b><span>${h.theme===key?'✅ Wybrany':'Motyw domku'}</span><button class="pet-shop-buy" data-act="houseTheme" data-theme="${key}">Zmień kolor</button></div>`).join('')}${Object.entries(HOUSE_MAGIC).map(([key,it])=>{const has=h.unlockedMagic?.includes(key);return `<div class="pet-shop-item"><div class="pet-shop-emoji">${it.emoji}</div><b>${esc(it.name)}</b><span>${has?'✅ Odblokowano':it.price+' ⭐'}</span><button class="pet-shop-buy" type="button" data-act="houseMagic" data-magic="${key}" ${!has&&houseStarsLeft(h)<it.price?'disabled':''}>${has?'🎉 Baw się':'Odblokuj'}</button></div>`}).join('')}</div>`;
+
+// Curated one-room slots: no item overlaps the central fox, window or another slot.
+const FOX_SLOTS={
+  wallLeft:{x:17,y:34,w:15,z:4}, wallMid:{x:42,y:30,w:17,z:4},
+  bigLeft:{x:18,y:86,w:24,z:7}, bigRight:{x:82,y:86,w:23,z:7},
+  plantLeft:{x:10,y:95,w:13,z:10}, plantRight:{x:92,y:95,w:13,z:10},
+  toyLeft:{x:32,y:97,w:13,z:11}, toyRight:{x:69,y:97,w:13,z:11},
+  carpet:{x:50,y:99,w:30,z:2}
+};
+function foxSlotForItem(key){
+ const kind=HOUSE_ITEMS[key]?.kind||'',name=key.toLowerCase();
+ if(['rug_leaf','bath_mat','picnic_blanket'].includes(key)||['rug','pond','mat'].includes(kind))return 'carpet';
+ if(isWallItem(key)||['picture','tv','mirror','clock'].includes(kind))return ['shelf_books','bookcase','tv_magic','bath_mirror','clock_cuckoo','star_telescope'].includes(key)?'wallMid':'wallLeft';
+ if(['bed_basic','bubble_bath','cozy_sleepbag','tree_magic','fox_hammock','bath_tub'].includes(key)||['bed','bathtub','tree','hammock','sleepbag'].includes(kind))return 'bigLeft';
+ if(['sofa_velvet','kitchen_table','fridge','stove','desk_magic','wardrobe','shower_rain'].includes(key)||['sofa','wardrobe','bookcase','fridge','stove','swing','table','shower','fireplace'].includes(kind))return 'bigRight';
+ if(['plant_sprout','flower_vase','flower_bed','vegetable_patch','watering_can'].includes(key)||['flowers','plant','vase','watering'].includes(kind))return 'plantRight';
+ if(['lamp_star','floor_lamp','fairy_fountain','cake_stand','fruit_basket','pet_bowl'].includes(key)||['lamp','fountain','fruit','cake'].includes(kind))return 'plantLeft';
+ if(['teddy_big','toy_chest','toy_train','bubble_duck','puzzle_board','game_cushion','little_piano'].includes(key)||['toy','teddy','duck','puzzle','piano','music','game'].includes(kind))return 'toyRight';
+ return ['bath_sink','sink','coffee_table','drawing_easel','artist_desk'].includes(key)||['sink','paint','easel','book','cupboard'].includes(kind)?'toyLeft':'toyRight';
+}
+function foxEnsureDisplay(h){
+ if(!h.displaySlots||typeof h.displaySlots!=='object'||Array.isArray(h.displaySlots))h.displaySlots={};
+ for(const slot of Object.keys(FOX_SLOTS)){
+  const k=h.displaySlots[slot];if(k&&(!h.items.includes(k)||foxSlotForItem(k)!==slot))delete h.displaySlots[slot];
  }
- return `<div class="house-shop-overlay" role="presentation"><button class="house-shop-backdrop" type="button" data-act="houseDrawerClose" aria-label="Zamknij sklep"></button><aside class="house-shop-drawer pet-simple-drawer" role="dialog" aria-modal="true" aria-label="Sklepik Fikusia"><div class="pet-shop-header"><div><strong>🛍️ Sklepik Fikusia</strong><small>🪙 ${ensureCoins()} monetek · ⭐ ${houseStarsLeft(h)} gwiazdek</small></div><button type="button" data-act="houseDrawerClose" aria-label="Zamknij">✕</button></div><div class="pet-shop-tabs">${tabBar}</div><div class="house-drawer-inner pet-shop-content">${content}</div></aside></div>`;
+ // Prefer classics for legacy profiles; never discard old items.
+ for(const key of h.items||[]){const slot=foxSlotForItem(key);if(!h.displaySlots[slot])h.displaySlots[slot]=key;}
+ return h.displaySlots;
+}
+function foxDisplayItem(key){
+ const h=ensureHouse();if(!HOUSE_ITEMS[key]||!h.items.includes(key))return;
+ const slot=foxSlotForItem(key);h.displaySlots[slot]=key;h.lastBought=key;
+ housePanel='';h.activity=null;persist();render(true);toast('🏡 '+HOUSE_ITEMS[key].name+' stoi już w pokoju!');
+}
+function foxSceneFurniture(h){
+ foxEnsureDisplay(h);
+ return Object.entries(FOX_SLOTS).map(([slot,p])=>{
+  const key=h.displaySlots[slot];if(!key||!h.items.includes(key))return '';
+  return `<div class="fox-scene-item fox-slot-${slot}" role="img" aria-label="${esc(HOUSE_ITEMS[key].name)}" style="left:${p.x}%;top:${p.y}%;width:${p.w}%;z-index:${p.z}">${itemSvg(key)}</div>`;
+ }).join('');
+}
+function foxGroupOfItem(key){
+ const room=foxCatalogRoom(key),kind=HOUSE_ITEMS[key]?.kind||'';
+ if(room==='garden'||['teddy','toy','game','piano','paint','music','swing','puzzle'].includes(kind))return 'toys';
+ if(isWallItem(key)||['vase','plant','lamp','rug','mirror','flowers','picture'].includes(kind)||['rug_leaf','plant_sprout','wall_stars','lamp_star','flower_vase','floor_lamp'].includes(key))return 'decor';
+ return 'furniture';
+}
+function foxPetMenu(){const h=ensureHouse(),p=housePanel;if(!p)return '';
+ const nav=[['care','💜 Opieka'],['food','🍎 Jedzenie'],['shop','🛍️ Sklep'],['collection','🎁 Moje rzeczy']];
+ let body='';
+ if(p==='care'){
+  body=`<p class="fox-modal-intro">Co dziś zrobimy z Fikusiem?</p><div class="fox-care-grid">
+   ${[['feed','🍎','Nakarm'],['play','🎾','Pobaw się'],['bath','🫧','Wykąp'],['sleep','💤','Połóż spać']].map(([mode,emoji,name])=>`<button class="fox-care-choice" type="button" data-act="petCare" data-mode="${mode}"><span>${emoji}</span><strong>${name}</strong></button>`).join('')}
+  </div><div class="fox-happy-note">🦊 Za naukę zbierasz monetki. Tutaj możesz wydać je na smakołyki, zabawki i wyposażenie pokoju.</div>`;
+ }else if(p==='food'){
+  const pantry=housePantry(h);
+  body=`<p class="fox-modal-intro">Wybierz przysmak. Jeśli go nie masz, kupisz go i podasz jednym kliknięciem.</p><div class="fox-catalog">
+   ${Object.entries(HOUSE_FOODS).map(([key,f])=>{const have=pantry[key]||0,can=have>0||ensureCoins()>=f.price;return `<article class="fox-store-item"><div class="fox-store-icon">${f.emoji}</div><strong>${esc(f.name)}</strong><small>${have?'W spiżarni: '+have:'🪙 '+f.price}</small><button type="button" data-act="petFeedOneTap" data-food="${key}" ${can?'':'disabled'}>${have?'🍽️ Podaj':'🛍️ Kup i podaj'}</button></article>`}).join('')}
+  </div>`;
+ }else if(p==='shop'){
+  const cats=[['all','Wszystko'],['furniture','Meble'],['decor','Ozdoby'],['toys','Zabawki']];
+  body=`<p class="fox-modal-intro">Wybierz rzecz. Sama stanie na przygotowanym miejscu. Niczego nie przesuwasz.</p>
+  <div class="fox-shop-categories">${cats.map(([k,n])=>`<button type="button" data-act="foxShopGroup" data-group="${k}" class="${foxShopCategory===k?'selected':''}">${n}</button>`).join('')}</div>
+  <div class="fox-catalog">${Object.entries(HOUSE_ITEMS).filter(([k])=>foxShopCategory==='all'||foxGroupOfItem(k)===foxShopCategory).sort(([a,aa],[b,bb])=>Number(h.items.includes(a))-Number(h.items.includes(b))||aa.price-bb.price).map(([key,it])=>{const have=h.items.includes(key),can=ensureCoins()>=it.price;return `<article class="fox-store-item"><div class="fox-store-art">${itemSvg(key)}</div><strong>${esc(it.name)}</strong><small>${have?'✅ Kupione':'🪙 '+it.price+' monetek'}</small><button type="button" data-act="${have?'foxDisplay':'houseBuy'}" data-item="${key}" ${have||can?'':'disabled'}>${have?(h.displaySlots[foxSlotForItem(key)]===key?'✓ W pokoju':'🏡 Ustaw w pokoju'):(can?'🛒 Kup':'🔒 Brak monet')}</button></article>`}).join('')}</div>`;
+ }else if(p==='collection'){
+  body=`<p class="fox-modal-intro">Wszystkie kupione rzeczy zostają Twoje. W pokoju pokazujemy wybrane dekoracje, żeby Fikuś miał dużo miejsca. Możesz je zamieniać jednym kliknięciem.</p>
+  <div class="fox-catalog">${(h.items||[]).map(key=>{const it=HOUSE_ITEMS[key];if(!it)return '';const shown=h.displaySlots[foxSlotForItem(key)]===key;return `<article class="fox-store-item"><div class="fox-store-art">${itemSvg(key)}</div><strong>${esc(it.name)}</strong><small>${shown?'✨ Widoczne w pokoju':'🎁 W kolekcji'}</small><button type="button" data-act="foxDisplay" data-item="${key}">${shown?'✓ W pokoju':'🏡 Pokaż'}</button><button type="button" class="fox-outline-btn" data-act="houseUse" data-item="${key}">🦊 Użyj</button></article>`}).join('')}</div>`;
+ }else if(p==='wardrobe'){
+  body=`<p class="fox-modal-intro">Wybierz strój Fikusia.</p><div class="fox-catalog">${Object.entries(FOX_OUTFITS).map(([key,it])=>`<article class="fox-store-item"><div class="fox-store-icon">${it.emoji}</div><strong>${esc(it.name)}</strong><small>${h.unlockedOutfits?.includes(key)||key==='classic'?'W Twojej szafie':'🪙 '+it.price}</small><button type="button" data-act="houseOutfit" data-outfit="${key}">${h.outfit===key?'✓ Ubrany':'Wybierz'}</button></article>`).join('')}</div>`;
+ }else if(p==='extras'){
+  body=`<p class="fox-modal-intro">Kolory pokoju i magiczne zabawy za gwiazdki.</p><div class="fox-catalog">${Object.entries(HOUSE_THEMES).map(([key,it])=>`<article class="fox-store-item"><div class="fox-store-icon">${it.emoji}</div><strong>${esc(it.name)}</strong><button type="button" data-act="houseTheme" data-theme="${key}">${h.theme===key?'✓ Wybrany':'Zmień styl'}</button></article>`).join('')}${Object.entries(HOUSE_MAGIC).map(([key,it])=>{const has=h.unlockedMagic?.includes(key);return `<article class="fox-store-item"><div class="fox-store-icon">${it.emoji}</div><strong>${esc(it.name)}</strong><small>${has?'✅ Odblokowano':it.price+' ⭐'}</small><button type="button" data-act="houseMagic" data-magic="${key}" ${has||houseStarsLeft(h)>=it.price?'':'disabled'}>${has?'🎉 Baw się':'Odblokuj'}</button></article>`}).join('')}</div>`;
+ }
+ return `<div class="fox-popup-layer"><button type="button" class="fox-popup-backdrop" data-act="houseDrawerClose" aria-label="Zamknij okno Fikusia"></button><section class="fox-popup-window" role="dialog" aria-modal="true" aria-label="Okno Fikusia"><header class="fox-popup-header"><span class="fox-popup-headicon">🦊</span><div><strong>Co robimy, przyjacielu?</strong><small>🪙 ${ensureCoins()} monetek · ⭐ ${houseStarsLeft(h)} gwiazdek</small></div><button type="button" class="fox-popup-close" data-act="houseDrawerClose" aria-label="Zamknij">✕</button></header><nav class="fox-popup-tabs" aria-label="Opcje Fikusia">${nav.map(([key,label])=>`<button type="button" data-act="houseDrawer" data-panel="${key}" class="${p===key||((p==='wardrobe'||p==='extras')&&key==='shop')?'active':''}">${label}</button>`).join('')}</nav>${p==='shop'||p==='wardrobe'||p==='extras'?`<div class="fox-popup-subtabs"><button type="button" data-act="houseDrawer" data-panel="shop" class="${p==='shop'?'active':''}">🪑 Przedmioty</button><button type="button" data-act="houseDrawer" data-panel="wardrobe" class="${p==='wardrobe'?'active':''}">👗 Ubranka</button><button type="button" data-act="houseDrawer" data-panel="extras" class="${p==='extras'?'active':''}">🌈 Kolory i magia</button></div>`:''}<div class="fox-popup-scroll house-drawer-inner">${body}</div></section></div>`;
 }
 
+function houseDrawer(h,room,owned,placed,outfits){return foxPetMenu();}
 function housePage(){
- const h=ensureHouse(),room=h.room||'bedroom',r=ROOM_INFO[room],activity=h.activity?.room===room?h.activity:null,needs=petNeeds(h);
- const owned=new Set(h.items||[]),placed=new Set(h.placed||[]),outfits=h.unlockedOutfits||['classic'];
- const mood=petFriendlyMessage(h),x=roomClamp(h.foxPositions?.[room]??50,17,83);
- const visible=sceneRoomItems(h);
- return `<section class="house-world pet-world fox-easy-world" aria-label="Gra Świat Fikusia">
- <header class="house-world-header pet-top"><button type="button" class="house-back" data-act="nav" data-page="home">← Wróć</button><div class="pet-top-name">🦊 <span><strong>Świat Fikusia</strong><small>Dom pełen zabawy</small></span></div><div class="house-world-tools"><span class="house-coin-purse">🪙 <b>${ensureCoins()}</b></span><span class="house-star-purse">⭐ ${houseStarsLeft(h)}</span><button type="button" class="house-world-shop" data-act="houseDrawer" data-panel="shop">🛍️ Sklep</button></div></header>
- <nav class="pet-room-tabs" aria-label="Wybierz pokój">${Object.entries(ROOM_INFO).map(([key,rr])=>`<button type="button" data-act="houseRoom" data-room="${key}" aria-pressed="${key===room}" class="${key===room?'active':''}">${rr.emoji} <span>${rr.name}</span></button>`).join('')}</nav>
- <div class="pet-compact-needs"><span>🍎 <b>${needs.full}%</b></span><span>💤 <b>${needs.energy}%</b></span><span>💜 <b>${needs.joy}%</b></span><span class="pet-easy-tip">🏡 Meble same stają w pokojach</span></div>
- <section class="pet-main-stage" aria-label="${esc(r.name)} — baw się z Fikusiem">
- <div class="pet-easy-guidance">👆 Dotknij mebla, aby Fikuś go użył. Dotknij podłogi, a Fikuś do niej podejdzie!</div>
- <div class="fairy-room house-world-room pet-main-room room-theme-${h.theme} room-type-${room}" role="group" aria-label="Pokój Fikusia. Meble pozostają na swoim miejscu, tylko lisek chodzi po pokoju.">${roomBackdrop(h.theme,!!h.night,room)}
- ${!activity?`<div class="pet-room-ambient">${visible.map(k=>sceneFurniture(k,h)).join('')}</div><button class="pet-idle-fox pet-fox-avatar" style="left:${x}%" data-act="houseFox" type="button" aria-label="Pobaw się z Fikusiem">${foxSvg(h.outfit)}</button><div class="pet-hint-bubble" role="status">${esc(mood.text)}</div>`:petActionArt(activity,h)}
- </div>
- <div class="pet-stage-footer"><span>${activity?`✨ ${esc(activity.text||'Fikuś się bawi!')}`:'🐾 Meble ustawiają się same. Baw się Fikusiem!'}</span>${activity?'<button class="pet-stop" type="button" data-act="houseStopUse">✓ Koniec</button>':`<button type="button" data-act="houseNight">${h.night?'☀️ Dzień':'🌙 Noc'}</button>`}</div>
- </section>
- <div class="pet-care-actions" role="group" aria-label="Opieka nad Fikusiem"><button type="button" data-act="petCare" data-mode="feed"><span>🍎</span><b>Nakarm</b></button><button type="button" data-act="petCare" data-mode="bath"><span>🫧</span><b>Umyj</b></button><button type="button" data-act="petCare" data-mode="sleep"><span>💤</span><b>Uśpij</b></button><button type="button" data-act="petCare" data-mode="play"><span>🎾</span><b>Pobaw się</b></button><button type="button" data-act="houseDrawer" data-panel="shop"><span>🛍️</span><b>Sklep</b></button></div>
- <div class="pet-object-shortcuts"><span>Wybierz zabawę:</span>${roomItems(h).filter(k=>houseItemUse(k).mode!=='look').map(k=>`<button type="button" data-act="houseUse" data-item="${k}">${houseItemUse(k).emoji} ${esc(HOUSE_ITEMS[k].name)}</button>`).join('')||'<small>Nowe przedmioty znajdziesz w sklepiku 🛍️</small>'}</div>
- </section>${houseDrawer(h,room,owned,placed,outfits)}`;
+ const h=ensureHouse(),activity=h.activity?.room==='bedroom'?h.activity:null,needs=petNeeds(h),mood=petFriendlyMessage(h);
+ return `<section class="fox-game" aria-label="Jeden pokój Fikusia">
+  <div class="fox-game-inner"><header class="fox-game-toolbar"><button type="button" class="fox-back-home" data-act="nav" data-page="home" aria-label="Wróć do nauki">← Nauka</button><span class="fox-game-title">🏡 Domek Fikusia</span><span class="fox-game-currency">🪙 ${ensureCoins()} <span>⭐ ${houseStarsLeft(h)}</span></span></header>
+  <div class="fox-main-stage room-theme-${h.theme}" aria-label="Pokój Fikusia">
+   ${roomBackdrop(h.theme,!!h.night,'bedroom')}
+   ${activity?`<div class="fox-act-wrap">${petActionArt(activity,h)}<button type="button" class="fox-after-action" data-act="houseStopUse">🏡 Wróć do Fikusia</button></div>`:
+    `${foxSceneFurniture(h)}<div class="fox-main-avatar" aria-hidden="true">${foxSvg(h.outfit)}</div><button type="button" class="fox-main-hit" data-act="houseFox" aria-label="Kliknij Fikusia, aby otworzyć opcje zabawy"><span class="fox-click-tip">Dotknij mnie! 👆</span></button><div class="fox-greeting" aria-live="polite">${esc(mood.text)}</div>`}
+   ${houseDrawer(h,'bedroom',new Set(h.items),new Set(h.placed),h.unlockedOutfits||['classic'])}
+  </div>
+  <div class="fox-game-footer"><span>💜 ${activity?'Fikuś świetnie się bawi!':'Kliknij Fikusia — wszystkie opcje są w jednym miejscu.'}</span><span class="fox-needs"><span>🍎 ${needs.full}%</span><span>💤 ${needs.energy}%</span><span>🎈 ${needs.joy}%</span></span></div></div>
+ </section>`;
 }
-
 function cosmosPage(){const g=ensureCosmos();const done=g.step>=g.total;if(done&&!g.done){g.done=true;profile.stats.cosmosWins=(profile.stats.cosmosWins||0)+1;profile.stats.stars+=8;profile.stats.coins=ensureCoins()+6;persist()}return `<h1 class="h1">🚀 Kosmiczna misja</h1><p class="muted">Odpowiadaj poprawnie, aby dolecieć do ostatniej planety.</p><div class="panel"><div class="fun-stats"><span class="game-pill">🪐 Etap ${Math.min(g.step+1,g.total)} / ${g.total}</span><span class="game-pill">🪙 ${ensureCoins()} monetek</span></div><div class="cosmos-track">${Array.from({length:g.total},(_,i)=>`<div class="planet ${i<g.step?'done':''} ${i===g.step&&!done?'current':''}">${['🌍','🌕','🪐','🌟','☄️','🌈'][i]}</div>`).join('')}</div>${done?`<div class="feedback good"><strong>🎉 Misja ukończona! Lisek doleciał do tęczowej planety. +8 gwiazdek i +6 monetek.</strong></div><div class="actions"><button class="btn btn-primary btn-big" data-act="cosmosReset">Nowa misja</button><button class="btn btn-outline" data-act="nav" data-page="games">← Inne gry</button></div>`:`<div class="question-box"><div class="equation">${esc(g.q.expression)}</div><p>Wybierz poprawny wynik, aby polecieć dalej.</p><div class="game-answer-choices">${g.options.map(n=>`<button type="button" class="game-answer" data-act="cosmosAnswer" data-value="${n}">${n}</button>`).join('')}</div>${g.status==='retry'?`<p class="security-note">Spróbuj jeszcze raz — Fikuś trzyma kciuki!</p>`:''}</div><div class="actions"><button class="btn btn-outline" data-act="nav" data-page="games">← Inne gry</button></div>`}</div>`}
 function wordPage(){const g=ensureWordGame(),q=g.deck[g.index];return `<h1 class="h1">🔤 Fabryka słów</h1><p class="muted">Krótka gra z języka polskiego dla klas 1–3.</p><div class="panel"><div class="fun-stats"><span class="game-pill">📘 Zadanie ${Math.min(g.index+1,g.deck.length)} / ${g.deck.length}</span><span class="game-pill">✅ ${g.correct} poprawnych</span></div>${g.done?`<div class="feedback good"><strong>🥳 Ukończono Fabrykę słów! +6 gwiazdek i +4 monetki.</strong></div><div class="actions"><button class="btn btn-primary" data-act="wordReset">Nowa seria</button><button class="btn btn-outline" data-act="nav" data-page="games">← Inne gry</button></div>`:`<div class="question-box"><h3>${esc(q.prompt)}</h3><div class="subject-options">${q.options.map((opt,idx)=>{let cls='subject-option';if(g.status!=='new'&&g.selected===idx&&idx===q.answer)cls+=' good';else if(g.status!=='new'&&g.selected===idx&&idx!==q.answer)cls+=' bad';else if(g.status==='show'&&idx===q.answer)cls+=' good';return `<button type="button" class="${cls}" ${g.status==='good'||g.status==='show'?'disabled':''} data-act="wordAnswer" data-value="${idx}">${esc(opt)}</button>`}).join('')}</div>${g.status==='retry'?`<div class="mascot-encourage"><span class="small-fox">🦊</span><div><b>Spróbuj jeszcze raz!</b><div>${esc(q.tip)}</div></div></div>`:''}${g.status==='good'?`<div class="feedback good"><b>Świetnie! ${esc(q.tip)}</b></div>`:''}${g.status==='show'?`<div class="feedback warn"><b>Poprawna odpowiedź: ${esc(q.options[q.answer])}</b><p>${esc(q.tip)}</p></div>`:''}<div class="actions" style="margin-top:16px">${g.status==='good'||g.status==='show'?`<button class="btn btn-primary" data-act="wordNext">${g.index+1>=g.deck.length?'Zakończ serię':'Następne pytanie →'}</button>`:'<span class="muted">Wybierz odpowiedź powyżej</span>'}<button class="btn btn-outline" data-act="nav" data-page="games">← Inne gry</button></div></div>`}</div>`}
 function forestPage(){const g=ensureForestGame(),q=g.deck[g.index];return `<h1 class="h1">🌳 Leśne zagadki</h1><p class="muted">Poznawaj przyrodę, pory roku i świat wokół siebie.</p><div class="panel"><div class="fun-stats"><span class="game-pill">🍄 Zagadka ${Math.min(g.index+1,g.deck.length)} / ${g.deck.length}</span><span class="game-pill">🌟 ${g.correct} poprawnych</span></div>${g.done?`<div class="feedback good"><strong>🌈 Leśna wyprawa ukończona! +6 gwiazdek i +4 monetki.</strong></div><div class="actions"><button class="btn btn-primary" data-act="forestReset">Nowe zagadki</button><button class="btn btn-outline" data-act="nav" data-page="games">← Inne gry</button></div>`:`<div class="question-box"><h3>${esc(q.prompt)}</h3><div class="subject-options">${q.options.map((opt,idx)=>{let cls='subject-option';if(g.status!=='new'&&g.selected===idx&&idx===q.answer)cls+=' good';else if(g.status!=='new'&&g.selected===idx&&idx!==q.answer)cls+=' bad';else if(g.status==='show'&&idx===q.answer)cls+=' good';return `<button type="button" class="${cls}" ${g.status==='good'||g.status==='show'?'disabled':''} data-act="forestAnswer" data-value="${idx}">${esc(opt)}</button>`}).join('')}</div>${g.status==='retry'?`<div class="mascot-encourage"><span class="small-fox">🦊</span><div><b>Spójrz jeszcze raz!</b><div>${esc(q.tip)}</div></div></div>`:''}${g.status==='good'?`<div class="feedback good"><b>Brawo! ${esc(q.tip)}</b></div>`:''}${g.status==='show'?`<div class="feedback warn"><b>Poprawna odpowiedź: ${esc(q.options[q.answer])}</b><p>${esc(q.tip)}</p></div>`:''}<div class="actions" style="margin-top:16px">${g.status==='good'||g.status==='show'?`<button class="btn btn-primary" data-act="forestNext">${g.index+1>=g.deck.length?'Zakończ serię':'Następna zagadka →'}</button>`:'<span class="muted">Wybierz odpowiedź powyżej</span>'}<button class="btn btn-outline" data-act="nav" data-page="games">← Inne gry</button></div></div>`}</div>`}
@@ -2372,14 +2667,12 @@ async function clickAction(button){const a=button.dataset.act,id=button.dataset.
  if(a==='petFeedOneTap'){petFeedOneTap(button.dataset.food);return}
 
 
- if(a==='petShowOwned'){
-  const key=button.dataset.item,h=ensureHouse();if(!h.items.includes(key))return;
-  h.room=itemRoom(key);housePanel='';
-  useHouseItem(key);return;
- }
+ if(a==='petShowOwned'){const key=button.dataset.item;useHouseItem(key);return;}
+ if(a==='foxDisplay'){foxDisplayItem(button.dataset.item);return;}
+ if(a==='foxShopGroup'){foxShopCategory=button.dataset.group||'all';render(true);return;}
  if(a==='houseNight'){if(profile){const h=ensureHouse();h.night=!h.night;persist();render(true)}return}
  if(a==='houseResetRoom'){toast('🏡 Meble są automatycznie ustawione!');return}
- if(a==='houseFox'){const f=app.querySelector('.pet-idle-fox');if(f){f.classList.remove('pet-fox-wave');void f.offsetWidth;f.classList.add('pet-fox-wave')}playSound('good');toast('🦊 Fikuś macha do Ciebie!');return}
+ if(a==='houseFox'){housePanel='care';render(true);return}
  if(a==='gameHouse'){if(profile)show('house');return}
  if(a==='gameCosmos'){if(profile){cosmosGame=null;show('cosmos')}return}
  if(a==='gameWords'){if(profile){wordGame=null;show('word')}return}
@@ -2405,12 +2698,12 @@ async function clickAction(button){const a=button.dataset.act,id=button.dataset.
  if(a==='houseSelectDone'){houseSelection=null;render(true);return}
 
  if(a==='houseUse'){useHouseItem(button.dataset.item||houseSelection);return}
- if(a==='houseStopUse'){clearHouseActivity();render(true);return}
+ if(a==='houseStopUse'){clearHouseActivity();housePanel='';render(true);return}
 
- if(a==='housePlaceFromShop'){const key=button.dataset.item,h=ensureHouse();if(!h.items.includes(key))return;h.room=itemRoom(key);housePanel='';persist();render(true);return}
- if(a==='houseDrawer'){housePanel=button.dataset.panel||'food';petEditMode=false;render(true);return}
+ if(a==='housePlaceFromShop'){foxDisplayItem(button.dataset.item);return}
+ if(a==='houseDrawer'){housePanel=button.dataset.panel||'care';render(true);return}
  if(a==='houseDrawerClose'){housePanel='';render(true);return}
- if(a==='houseRoom'){const newRoom=button.dataset.room;if(!ROOM_INFO[newRoom])return;const h=ensureHouse();h.activity=null;h.room=newRoom;houseSelection=null;housePanel=housePanel==='shop'?'shop':'';persist();render(true);return}
+ if(a==='houseRoom'){toast('Fikuś mieszka teraz w jednym przytulnym pokoju!');return}
  if(a==='houseFoodBuy'){buyHouseFood(button.dataset.food);return}
  if(a==='houseFeed'){feedHousePet(button.dataset.food);return}
  if(a==='houseMagic'){playHouseMagic(button.dataset.magic);return}
@@ -2428,7 +2721,9 @@ async function clickAction(button){const a=button.dataset.act,id=button.dataset.
  if(a==='mascotTip'){mascotOpen=!mascotOpen;mascotMood='ready';render();return}
  if(a==='toggleSound'){toggleSound();return}
  if(a==='toggleAnimations'){toggleAnimation();return}
- if(a==='subjectSelect'){if(!profile)return;startSubject(button.dataset.subject||'reading',true);return}
+ if(a==='subjectSelect'){if(!profile)return;subjectSchoolMode=false;Object.keys(subjectQuestionDecks).forEach(k=>delete subjectQuestionDecks[k]);startSubject(button.dataset.subject||'reading',true);return}
+ if(a==='schoolSubject'){if(!profile)return;startSchoolSubject(button.dataset.subject||'bookmath');return}
+ if(a==='schoolStage'){if(!profile)return;profile.stats.learningStage=Math.max(1,Math.min(5,Number(button.dataset.stage)||2));Object.keys(subjectQuestionDecks).forEach(k=>delete subjectQuestionDecks[k]);persist();render(true);return}
  if(a==='subjectRandom'){if(!profile)return;startSubject(pick(SUBJECT_KEYS),true);return}
  if(a==='subjectAnswer'){answerSubject(Number(button.dataset.value));return}
  if(a==='subjectNext'){nextSubjectQuestion();return}
