@@ -192,7 +192,49 @@
  #print-only-output .math-result-line{display:block!important;width:28px!important;height:14px!important;justify-self:start!important;border-bottom:1px solid #333!important}
  #print-only-output .math-key-result{justify-self:start!important}
 }
-</style><title>Magiczna Kraina Nauki 7.5</title></head><body><div id="app"><div class="loading-screen"><div class="loader-fox">🦊</div><h1>Odkrywamy Magiczną Krainę…</h1></div></div><script>
+
+/* Drukarnia 7.6 — rowne pola odpowiedzi przy znaku =, rowniez na A4. */
+.math-sheet-grid .math-task{
+ display:grid!important;grid-template-columns:20px minmax(0,1fr) 31px!important;
+ column-gap:5px!important;align-items:center!important;justify-content:stretch!important;
+ width:100%!important;height:26px!important;min-height:26px!important;max-height:26px!important;
+ padding:1px 0!important;line-height:20px!important;overflow:visible!important;
+}
+.math-sheet-grid .math-task-number{
+ display:block!important;width:auto!important;line-height:20px!important;white-space:nowrap!important;
+}
+.math-sheet-grid .math-expression{
+ display:block!important;width:auto!important;min-width:0!important;max-width:100%!important;
+ justify-self:end!important;text-align:right!important;line-height:20px!important;
+ white-space:nowrap!important;font-variant-numeric:tabular-nums!important;
+}
+.math-sheet-grid .math-result-line{
+ display:block!important;width:30px!important;height:16px!important;
+ border:0!important;border-bottom:1px solid #333!important;
+ justify-self:start!important;align-self:center!important;margin:0 0 2px!important;
+ padding:0!important;box-sizing:border-box!important;
+}
+.math-sheet-grid .math-key-result{
+ display:block!important;width:31px!important;justify-self:start!important;
+ align-self:center!important;line-height:20px!important;
+}
+@media print{
+ #print-only-output .math-sheet-grid .math-task{
+  display:grid!important;grid-template-columns:20px minmax(0,1fr) 31px!important;
+  gap:5px!important;height:26px!important;max-height:26px!important;
+  min-height:26px!important;align-items:center!important;
+ }
+ #print-only-output .math-sheet-grid .math-expression{
+  width:auto!important;min-width:0!important;max-width:100%!important;
+  justify-self:end!important;text-align:right!important;
+ }
+ #print-only-output .math-sheet-grid .math-result-line{
+  display:block!important;width:30px!important;height:16px!important;
+  justify-self:start!important;align-self:center!important;
+  margin:0 0 2px!important;border-bottom:1px solid #000!important;
+ }
+}
+</style><title>Magiczna Kraina Nauki 7.6</title></head><body><div id="app"><div class="loading-screen"><div class="loader-fox">🦊</div><h1>Odkrywamy Magiczną Krainę…</h1></div></div><script>
 const __data = (() => {
 
 const q = (id, prompt, options, answer, hint, skill) => ({ id, type: 'choice', prompt, options, answer, hint, explanation: `Poprawna odpowiedź: ${options[answer]}. ${hint}`, skill });
@@ -1189,7 +1231,67 @@ function shuffled(xs) { const a = xs.slice(); for (let i = a.length - 1; i > 0; 
     const j = Math.floor(Math.random() * (i + 1));
     [a[i], a[j]] = [a[j], a[i]];
 } return a; }
-const orderSentences = [['Fikuś', 'czyta', 'ciekawą', 'książkę.'], ['Dzisiaj', 'Ola', 'idzie', 'do', 'parku.'], ['Mały', 'kot', 'śpi', 'na', 'kanapie.'], ['Wesołe', 'dzieci', 'bawią', 'się', 'razem.'], ['Jesienią', 'liście', 'spadają', 'z', 'drzew.'], ['Mama', 'piecze', 'pyszne', 'ciasto.']];
+const orderSentences = [
+ ['Fikuś', 'czyta', 'ciekawą', 'książkę.'],
+ ['Dzisiaj', 'Ola', 'idzie', 'do', 'parku.'],
+ ['Mały', 'kot', 'śpi', 'na', 'kanapie.'],
+ ['Wesołe', 'dzieci', 'bawią', 'się', 'razem.'],
+ ['Jesienią', 'liście', 'spadają', 'z', 'drzew.'],
+ ['Mama', 'piecze', 'pyszne', 'ciasto.'],
+ ['Rano', 'Zosia', 'karmi', 'swojego', 'psa.'],
+ ['Tata', 'naprawia', 'stary', 'rower.'],
+ ['Na', 'łące', 'rosną', 'kolorowe', 'kwiaty.'],
+ ['Po', 'deszczu', 'świeci', 'piękna', 'tęcza.'],
+ ['W', 'ogrodzie', 'śpiewają', 'małe', 'ptaki.'],
+ ['Wieczorem', 'babcia', 'opowiada', 'ciekawą', 'historię.'],
+ ['Kasia', 'maluje', 'wielki', 'żółty', 'balon.'],
+ ['Mój', 'brat', 'buduje', 'zamek', 'z', 'klocków.'],
+ ['W', 'sobotę', 'idziemy', 'na', 'basen.'],
+ ['Zimą', 'dzieci', 'lepią', 'dużego', 'bałwana.'],
+ ['Na', 'stole', 'leżą', 'trzy', 'jabłka.'],
+ ['Olek', 'znalazł', 'mały', 'skarb', 'w', 'lesie.'],
+ ['Ruda', 'wiewiórka', 'zbiera', 'orzechy.'],
+ ['Wczoraj', 'Ania', 'odwiedziła', 'swoją', 'babcię.'],
+ ['Po', 'lekcjach', 'gramy', 'w', 'piłkę.'],
+ ['Nad', 'stawem', 'skacze', 'zielona', 'żaba.'],
+ ['Każdego', 'ranka', 'myję', 'zęby.'],
+ ['Wiosną', 'zaczynają', 'kwitnąć', 'tulipany.'],
+ ['Dziadek', 'pokazuje', 'nam', 'stare', 'fotografie.'],
+ ['Przed', 'snem', 'czytam', 'ulubioną', 'bajkę.'],
+ ['Pod', 'drzewem', 'siedzi', 'mały', 'jeż.'],
+ ['Marysia', 'pakuje', 'książki', 'do', 'plecaka.'],
+ ['Na', 'niebie', 'świecą', 'jasne', 'gwiazdy.'],
+ ['Po', 'śniadaniu', 'idziemy', 'do', 'szkoły.']
+];
+// Zapamietujemy niedawne zdania, aby nowa seria nie powtarzala poprzedniej.
+let lastOrderSentenceIds = [];
+let orderSentenceDeck = [];
+function nextOrderWordBank(words, previous = []) {
+    const indexes = words.map((_, i) => i);
+    if (indexes.length <= 1) return indexes;
+    for (let tries = 0; tries < 24; tries++) {
+        const result = shuffled(indexes);
+        if (result.some((n,i) => n !== i) && (previous.length !== result.length || result.some((n,i) => n !== previous[i])))
+            return result;
+    }
+    // Nawet pechowe losowanie nie moze pozostawic gotowego zdania.
+    return indexes.slice(1).concat(0);
+}
+function nextOrderSeries() {
+    const chosenIds = [];
+    while (chosenIds.length < 5) {
+        if (!orderSentenceDeck.length) {
+            const avoiding = new Set(lastOrderSentenceIds);
+            const next = shuffled(orderSentences.map((_,i)=>i));
+            orderSentenceDeck = next.filter(i=>!avoiding.has(i)).concat(next.filter(i=>avoiding.has(i)));
+        }
+        const nextId = orderSentenceDeck.shift();
+        if (!chosenIds.includes(nextId)) chosenIds.push(nextId);
+    }
+    lastOrderSentenceIds = chosenIds;
+    return chosenIds.map(i => orderSentences[i]);
+}
+
 function initGame(which) {
     game = which;
     if (game === 'memory') {
@@ -1199,7 +1301,7 @@ function initGame(which) {
         gameState = { cards, flipped: [], matched: [], busy: false, done: false, title: story.unit, turns: 0 };
     }
     else if (game === 'order')
-        gameState = { index: 0, chosen: [], sentences: shuffled(orderSentences).slice(0, 4), done: false, feedback: '' };
+        { const sentences = nextOrderSeries(); gameState = { index: 0, chosen: [], sentences, wordOrder: nextOrderWordBank(sentences[0]), done: false, feedback: '' }; }
     else {
         const problems = mathLesson(grade(), stage(), todaySeed(), 4).questions.slice(0, 5);
         gameState = { index: 0, problems, choices: [], done: false, correct: 0, feedback: '' };
@@ -1223,7 +1325,7 @@ function gameView() {
         contents = `<div class="game-panel"><div class="game-header"><span>🎧 ${esc(g.title)}</span><strong>Odkryto par: ${g.matched.length} / 4</strong></div>${g.done ? `<div class="game-win"><span>🏆</span><h2>Wspaniała pamięć!</h2><p>Wszystkie słówka zostały połączone.</p>${btn('restart-game', 'Zagraj jeszcze raz', 'primary')}</div>` : `<div class="memory-grid">${g.cards.map((c, i) => `<button class="memory-card ${g.matched.includes(c.pair) ? 'matched' : ''} ${g.flipped.includes(i) ? 'flipped' : ''}" data-act="memory-flip" data-i="${i}" ${g.matched.includes(c.pair) || g.busy ? 'disabled' : ''}>${g.flipped.includes(i) || g.matched.includes(c.pair) ? `<strong>${esc(c.text)}</strong><small>${c.lang === 'en' ? '🇬🇧' : '🇵🇱'}</small>` : '<span>✦</span>'}</button>`).join('')}</div><p class="game-instruction">Dotknij dwóch kart. Jeśli to para, zapamiętaj ich znaczenie.</p>`}</div>`;
     if (game === 'order') {
         const words = g.sentences[g.index], done = g.done;
-        contents = `<div class="game-panel"><div class="game-header"><span>✍️ Ułóż zdanie</span><strong>${Math.min(g.index + 1, g.sentences.length)} / ${g.sentences.length}</strong></div>${done ? `<div class="game-win"><span>🎉</span><h2>Wspaniale ułożone zdania!</h2>${btn('restart-game', 'Nowa seria', 'primary')}</div>` : `<h2>Wybierz wyrazy w dobrej kolejności</h2><div class="sentence-work">${g.chosen.map((idx) => `<span class="picked-word">${esc(words[idx])}</span>`).join('') || '<em>Dotknij pierwszego wyrazu…</em>'}</div><div class="word-bank">${words.map((word, i) => `<button data-act="order-word" data-i="${i}" ${g.chosen.includes(i) ? 'disabled' : ''}>${esc(word)}</button>`).join('')}</div>${g.feedback ? `<div class="feedback feedback-tip">${esc(g.feedback)}</div>` : ''}<div class="actions-row">${btn('order-remove', '← Cofnij', 'soft')}${btn('order-check', 'Sprawdź zdanie', 'primary', g.chosen.length !== words.length ? 'disabled' : '')}</div>`}</div>`;
+        contents = `<div class="game-panel"><div class="game-header"><span>✍️ Ułóż zdanie</span><strong>${Math.min(g.index + 1, g.sentences.length)} / ${g.sentences.length}</strong></div>${done ? `<div class="game-win"><span>🎉</span><h2>Wspaniale ułożone zdania!</h2>${btn('restart-game', 'Nowa seria', 'primary')}</div>` : `<h2>Wybierz wyrazy w dobrej kolejności</h2><div class="sentence-work">${g.chosen.map((idx) => `<span class="picked-word">${esc(words[idx])}</span>`).join('') || '<em>Dotknij pierwszego wyrazu…</em>'}</div><div class="word-bank">${g.wordOrder.map(i => `<button data-act="order-word" data-i="${i}" ${g.chosen.includes(i) ? 'disabled' : ''}>${esc(words[i])}</button>`).join('')}</div>${g.feedback ? `<div class="feedback feedback-tip">${esc(g.feedback)}</div>` : ''}<div class="actions-row">${btn('order-remove', '← Cofnij', 'soft')}${btn('order-check', 'Sprawdź zdanie', 'primary', g.chosen.length !== words.length ? 'disabled' : '')}</div>`}</div>`;
     }
     if (game === 'numbers') {
         const q = g.problems[g.index];
@@ -2049,6 +2151,7 @@ async function handleAction(btnEl) {
             g.index++;
             g.chosen = [];
             g.feedback = '';
+            if (g.index < g.sentences.length) g.wordOrder = nextOrderWordBank(g.sentences[g.index], g.wordOrder);
             if (g.index >= g.sentences.length) {
                 g.done = true;
                 child.stats.stars = stars() + 1;
@@ -2057,7 +2160,7 @@ async function handleAction(btnEl) {
             render(true);
         }
         else {
-            g.feedback = 'Początek zdania zapisujemy wielką literą. Spróbuj jeszcze raz.';
+            g.feedback = 'Sprawdź kolejność wyrazów i spróbuj jeszcze raz.';
             g.chosen = [];
             render(true);
         }
