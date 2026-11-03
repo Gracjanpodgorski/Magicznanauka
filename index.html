@@ -172,7 +172,27 @@
  #print-only-output .math-result-line{width:27px!important;height:14px!important;border-bottom:1px solid #333!important}
  #print-only-output .math-key-result{font-size:10pt!important;color:#000!important}
 }
-</style><title>Magiczna Kraina Nauki 7.4</title></head><body><div id="app"><div class="loading-screen"><div class="loader-fox">🦊</div><h1>Odkrywamy Magiczną Krainę…</h1></div></div><script>
+
+/* 7.5 — rownosc linii na wyniki: odseparowana stala kolumna, niezalezna od dlugosci dzialania. */
+.math-task{display:grid;grid-template-columns:22px 96px 30px;align-items:center;justify-content:start;column-gap:4px}
+.math-task-number{width:22px}
+.math-expression{display:block;min-width:0;width:96px}
+.math-result-line{display:block;justify-self:start;width:30px;height:15px;border-bottom:1px solid #444}
+.math-key-result{justify-self:start}
+@media screen and (max-width:630px){
+ .math-task{grid-template-columns:18px 86px 24px;column-gap:3px}
+ .math-task-number{width:18px}
+ .math-expression{width:86px}
+ .math-result-line{width:24px}
+}
+@media print{
+ #print-only-output .math-task{display:grid!important;grid-template-columns:20px 98px 28px!important;align-items:center!important;justify-content:start!important;column-gap:4px!important}
+ #print-only-output .math-task-number{width:20px!important}
+ #print-only-output .math-expression{width:98px!important;min-width:0!important}
+ #print-only-output .math-result-line{display:block!important;width:28px!important;height:14px!important;justify-self:start!important;border-bottom:1px solid #333!important}
+ #print-only-output .math-key-result{justify-self:start!important}
+}
+</style><title>Magiczna Kraina Nauki 7.5</title></head><body><div id="app"><div class="loading-screen"><div class="loader-fox">🦊</div><h1>Odkrywamy Magiczną Krainę…</h1></div></div><script>
 const __data = (() => {
 
 const q = (id, prompt, options, answer, hint, skill) => ({ id, type: 'choice', prompt, options, answer, hint, explanation: `Poprawna odpowiedź: ${options[answer]}. ${hint}`, skill });
