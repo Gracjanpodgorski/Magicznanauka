@@ -138,7 +138,41 @@
 @media(max-width:1010px){.printer-layout{grid-template-columns:1fr}}
 @media(max-width:620px){.printer-paper{padding:16px;min-height:280px}.printer-subject{min-width:calc(50% - 5px)}.printer-layout{gap:12px}}
 @media print{@page{size:A4;margin:14mm}html,body{background:#fff!important;color:#000!important}body>#app,body>#toast{display:none!important}body>#print-only-output{display:block!important;position:static!important;width:100%!important;margin:0!important;padding:0!important;background:#fff!important}#print-only-output .printer-paper{border:0!important;box-shadow:none!important;max-width:none!important;min-height:0!important;padding:0!important}#print-only-output .paper-task{break-inside:avoid!important}#print-only-output .paper-context{background:#fff!important}}
-</style><title>Magiczna Kraina Nauki 7.3</title></head><body><div id="app"><div class="loading-screen"><div class="loader-fox">🦊</div><h1>Odkrywamy Magiczną Krainę…</h1></div></div><script>
+
+/* Drukarnia 7.4: maksymalnie 120 krótkich działań na jednej kartce A4 */
+.printer-paper.math-compact{padding:19px 20px;min-height:0;max-width:900px}
+.math-compact .paper-info{padding-bottom:6px;font-size:11px}
+.math-compact h2{font-size:17px;margin:7px 0 3px}
+.math-compact .paper-name{font-size:12px;margin:6px 0 12px}
+.math-compact .paper-footnote{margin-top:9px;font-size:10px}
+.math-sheet-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:9px;row-gap:0}
+.math-sheet-grid.math-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.math-sheet-grid.math-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.math-task{display:flex;align-items:center;gap:4px;min-height:28px;padding:2px 1px;border-bottom:0!important;break-inside:avoid;page-break-inside:avoid;white-space:nowrap;font-variant-numeric:tabular-nums}
+.math-task-number{font-size:10px;color:#666;width:22px;flex:none}
+.math-expression{font-size:12.3px;font-weight:750;letter-spacing:0;white-space:nowrap;color:#111}
+.math-result-line{display:inline-block;flex:none;width:31px;height:14px;border-bottom:1px solid #444}
+.math-key-result{font-size:12px;font-weight:800;color:#166a48}
+.printer-mode-note{background:#effaf5;border:1px solid #d3ece1;padding:11px 12px;border-radius:12px;color:#376b54;font-weight:750;font-size:.8rem;line-height:1.45}
+@media screen and (max-width:630px){.math-sheet-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.math-sheet-grid.math-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.printer-paper.math-compact{padding:12px 10px}.math-task{min-height:29px}.math-expression{font-size:11px}.math-task-number{width:17px;font-size:9px}}
+@media screen and (max-width:430px){.math-sheet-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.math-task-number{width:20px}}
+@media print{
+ @page{size:A4 portrait;margin:9mm}
+ #print-only-output .printer-paper.math-compact{max-width:none!important;width:100%!important;padding:0!important;margin:0!important;min-height:0!important;box-shadow:none!important;border:0!important}
+ #print-only-output .math-compact .paper-info{padding-bottom:5px!important;font-size:9pt!important}
+ #print-only-output .math-compact h2{font-size:14pt!important;margin:5px 0 4px!important}
+ #print-only-output .math-compact .paper-name{font-size:9pt!important;margin:5px 0 8px!important}
+ #print-only-output .math-compact .paper-footnote{margin:8px 0 0!important;font-size:7pt!important}
+ #print-only-output .math-sheet-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;column-gap:7px!important}
+ #print-only-output .math-sheet-grid.math-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ #print-only-output .math-sheet-grid.math-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #print-only-output .math-task{min-height:26px!important;max-height:26px!important;gap:4px!important;padding:2px 0!important;break-inside:avoid!important;page-break-inside:avoid!important}
+ #print-only-output .math-task-number{font-size:8pt!important;width:20px!important}
+ #print-only-output .math-expression{font-size:10pt!important;color:#000!important}
+ #print-only-output .math-result-line{width:27px!important;height:14px!important;border-bottom:1px solid #333!important}
+ #print-only-output .math-key-result{font-size:10pt!important;color:#000!important}
+}
+</style><title>Magiczna Kraina Nauki 7.4</title></head><body><div id="app"><div class="loading-screen"><div class="loader-fox">🦊</div><h1>Odkrywamy Magiczną Krainę…</h1></div></div><script>
 const __data = (() => {
 
 const q = (id, prompt, options, answer, hint, skill) => ({ id, type: 'choice', prompt, options, answer, hint, explanation: `Poprawna odpowiedź: ${options[answer]}. ${hint}`, skill });
@@ -998,7 +1032,7 @@ let lesson = null, exam = null, examReviewId = '', selectedSubject = 'polish', s
 let petTab = 'care', shopTab = 'food', bubbleHits = [], notice = '', noticeHandle = null;
 let selectedAdmin = null, reports = null, adminToken = null, parentError = '', saveStatus = '';
 let examConfig = { subjects: ['polish', 'english', 'math'], count: 10, level: 'current', topics: {} };
-let printerConfig = { subjects: ['math'], count: 10, level: 'current', topics: {} };
+let printerConfig = { subjects: ['math'], count: 80, level: 'current', maxNumber: null, topics: {} };
 let printerQuestions = [], printerVersion = 0;
 let queryGate = 0;
 const todaySeed = () => { const t = dayKey(); return Math.floor(new Date(`${t}T12:00:00Z`).getTime() / 86400000); };
@@ -1043,11 +1077,11 @@ function navigation() {
     const items = [['home', 'Dzisiaj', '☀️'], ['library', 'Biblioteka', '📚'], ['exam', 'Sprawdziany', '📝'], ['printer', 'Drukuj zadania', '🖨️'], ['games', 'Gry', '🎮'], ['fox', 'Fikuś', '🦊']];
     return `<nav class="side-nav" aria-label="Menu główne">${items.map(([r, label, icon]) => `<button class="side-link ${route === r || route === 'lesson' && r === 'home' ? 'active' : ''}" type="button" data-act="route" data-route="${r}"><span class="nav-emoji">${icon}</span><span>${label}</span></button>`).join('')}</nav>`;
 }
-function appShell() { const isImmersive = route === 'lesson' || route === 'exam'; return `<div class="shell ${isImmersive ? 'shell-focus' : ''}"><aside class="sidebar"><div class="brand"><span class="brand-mark">✦</span><div><strong>Magiczna<br><em>Kraina Nauki</em></strong><small>Twoja przygoda z wiedzą</small></div></div>${navigation()}<div class="side-motto"><div class="motto-fox">${foxSvg('happy', 'tiny')}</div><strong>Każda próba to krok naprzód!</strong><span>Małe odkrycia budują wielką wiedzę.</span></div><button class="side-parent" data-act="route" data-route="parent">⚙️ Dla rodzica</button></aside><main class="main-area"><header class="topbar"><button type="button" class="mobile-brand" data-act="route" data-route="home"><span>✦</span> Magiczna Kraina Nauki</button><div class="top-breadcrumb">${route === 'lesson' ? 'Twoja przygoda' : route === 'exam' ? 'Sprawdzian' : 'Odkrywaj, ucz się, baw!'}</div><div class="top-actions"><div class="top-coins">🪙 <strong>${coins()}</strong></div><div class="top-stars">⭐ <strong>${stars()}</strong></div><button class="profile-button" data-act="ask-exit" aria-label="Zmień profil dziecka"><span>${esc(child.avatar || '🦊')}</span><b>${esc(child.name)}</b><span class="small-chevron">⌄</span></button></div></header><div class="page-content">${view()}</div><footer class="footer">Magiczna Kraina Nauki 7.3 · Autorskie zadania · ${esc(toastStatus())} <span>© Gracjan Podgórski</span></footer></main><nav class="mobile-nav" aria-label="Nawigacja główna">${[['home', 'Dziś', '☀️'], ['library', 'Nauka', '📚'], ['exam', 'Testy', '📝'], ['printer', 'Drukuj', '🖨️'], ['games', 'Gry', '🎮'], ['fox', 'Fikuś', '🦊']].map(([r, l, e]) => `<button type="button" data-act="route" data-route="${r}" class="${route === r ? 'selected' : ''}"><span>${e}</span><b>${l}</b></button>`).join('')}</nav>${modalMarkup()}</div>`; }
+function appShell() { const isImmersive = route === 'lesson' || route === 'exam'; return `<div class="shell ${isImmersive ? 'shell-focus' : ''}"><aside class="sidebar"><div class="brand"><span class="brand-mark">✦</span><div><strong>Magiczna<br><em>Kraina Nauki</em></strong><small>Twoja przygoda z wiedzą</small></div></div>${navigation()}<div class="side-motto"><div class="motto-fox">${foxSvg('happy', 'tiny')}</div><strong>Każda próba to krok naprzód!</strong><span>Małe odkrycia budują wielką wiedzę.</span></div><button class="side-parent" data-act="route" data-route="parent">⚙️ Dla rodzica</button></aside><main class="main-area"><header class="topbar"><button type="button" class="mobile-brand" data-act="route" data-route="home"><span>✦</span> Magiczna Kraina Nauki</button><div class="top-breadcrumb">${route === 'lesson' ? 'Twoja przygoda' : route === 'exam' ? 'Sprawdzian' : 'Odkrywaj, ucz się, baw!'}</div><div class="top-actions"><div class="top-coins">🪙 <strong>${coins()}</strong></div><div class="top-stars">⭐ <strong>${stars()}</strong></div><button class="profile-button" data-act="ask-exit" aria-label="Zmień profil dziecka"><span>${esc(child.avatar || '🦊')}</span><b>${esc(child.name)}</b><span class="small-chevron">⌄</span></button></div></header><div class="page-content">${view()}</div><footer class="footer">Magiczna Kraina Nauki 7.4 · Autorskie zadania · ${esc(toastStatus())} <span>© Gracjan Podgórski</span></footer></main><nav class="mobile-nav" aria-label="Nawigacja główna">${[['home', 'Dziś', '☀️'], ['library', 'Nauka', '📚'], ['exam', 'Testy', '📝'], ['printer', 'Drukuj', '🖨️'], ['games', 'Gry', '🎮'], ['fox', 'Fikuś', '🦊']].map(([r, l, e]) => `<button type="button" data-act="route" data-route="${r}" class="${route === r ? 'selected' : ''}"><span>${e}</span><b>${l}</b></button>`).join('')}</nav>${modalMarkup()}</div>`; }
 function accessShell() { if (route === 'pin')
     return pinScreen(); if (route === 'create')
     return createScreen(); return profileScreen(); }
-function profileScreen() { return `<div class="access-page"><div class="access-glow orb-one"></div><div class="access-glow orb-two"></div><div class="access-hero"><span class="wordmark">✦ MAGICZNA KRAINA NAUKI <span class="version">7.3</span></span><h1>Wielka przygoda<br><em>zaczyna się od ciekawości!</em></h1><p>Historyjki do słuchania, czytanie, matematyczne odkrycia i Fikuś — wszystko w jednym, przyjaznym miejscu.</p><div class="access-fox">${foxSvg('happy', 'access')}</div></div><section class="profile-box"><div class="box-heading"><span class="pill lilac">🌟 Witaj w krainie!</span><h2>Kto dzisiaj odkrywa?</h2><p>Wybierz swój profil i wpisz PIN.</p></div><div class="profile-options">${roster.map(p => `<button class="kid-profile" data-act="choose-child" data-id="${esc(p.id)}"><span>${esc(p.avatar || '🦊')}</span><strong>${esc(p.name)}</strong><small>Klasa ${Number(p.grade)}</small></button>`).join('')}</div><div class="connection-hint">${esc(rosterStatus)}</div><div class="profile-bottom"><button class="btn btn-outline" data-act="create-screen">＋ Nowy profil</button><button class="btn btn-primary" data-act="demo">✨ Wypróbuj demo</button></div><small>Demo pozwala bezpiecznie obejrzeć aplikację bez zakładania konta. Nie zapisuje wyników w szkolnej chmurze.</small></section></div>`; }
+function profileScreen() { return `<div class="access-page"><div class="access-glow orb-one"></div><div class="access-glow orb-two"></div><div class="access-hero"><span class="wordmark">✦ MAGICZNA KRAINA NAUKI <span class="version">7.4</span></span><h1>Wielka przygoda<br><em>zaczyna się od ciekawości!</em></h1><p>Historyjki do słuchania, czytanie, matematyczne odkrycia i Fikuś — wszystko w jednym, przyjaznym miejscu.</p><div class="access-fox">${foxSvg('happy', 'access')}</div></div><section class="profile-box"><div class="box-heading"><span class="pill lilac">🌟 Witaj w krainie!</span><h2>Kto dzisiaj odkrywa?</h2><p>Wybierz swój profil i wpisz PIN.</p></div><div class="profile-options">${roster.map(p => `<button class="kid-profile" data-act="choose-child" data-id="${esc(p.id)}"><span>${esc(p.avatar || '🦊')}</span><strong>${esc(p.name)}</strong><small>Klasa ${Number(p.grade)}</small></button>`).join('')}</div><div class="connection-hint">${esc(rosterStatus)}</div><div class="profile-bottom"><button class="btn btn-outline" data-act="create-screen">＋ Nowy profil</button><button class="btn btn-primary" data-act="demo">✨ Wypróbuj demo</button></div><small>Demo pozwala bezpiecznie obejrzeć aplikację bez zakładania konta. Nie zapisuje wyników w szkolnej chmurze.</small></section></div>`; }
 function pinScreen() { return `<div class="auth-center"><div class="auth-card"><button class="text-back" data-act="back-profiles">← Wróć do profili</button><div class="auth-avatar">${esc(pinTarget?.avatar || '🦊')}</div><h1>Cześć, ${esc(pinTarget?.name || 'Odkrywco')}!</h1><p>Wpisz swój 6-cyfrowy PIN.</p><form id="pin-form"><label class="sr-only" for="pin">PIN</label><input id="pin" class="pin-field" name="pin" autocomplete="off" inputmode="numeric" type="password" maxlength="6" pattern="[0-9]{6}" placeholder="••••••" required><button class="btn btn-primary btn-block" type="submit">Wejdź do krainy →</button></form></div></div>`; }
 function createScreen() { return `<div class="auth-center"><div class="auth-card"><button class="text-back" data-act="back-profiles">← Wróć do profili</button><div class="auth-avatar">🌟</div><h1>Nowy odkrywca</h1><p>Poproś rodzica o pomoc przy zakładaniu profilu.</p><form id="create-form"><label>Imię / pseudonim<input name="name" required minlength="2" maxlength="36" placeholder="np. Ola"></label><label>Klasa<select name="grade"><option value="1">Klasa 1</option><option value="2" selected>Klasa 2</option><option value="3">Klasa 3</option></select></label><label>Avatar<select name="avatar"><option>🦊</option><option>🦉</option><option>🐻</option><option>🐼</option><option>🦄</option><option>🐸</option></select></label><label>PIN (6 cyfr)<input name="pin" required inputmode="numeric" pattern="[0-9]{6}" maxlength="6" type="password" placeholder="••••••"></label><button class="btn btn-primary btn-block" type="submit">Utwórz profil</button></form></div></div>`; }
 function view() { if (route === 'home')
@@ -1270,9 +1304,72 @@ function toggleExamTopic(subject, topic) {
     updateExamConfig({ ...examConfig, topics: { ...examConfig.topics, [subject]: [...chosen] } });
 }
 
-// Drukarnia: zadania z tego samego banku co sprawdziany, bez zmieniania postępów dziecka.
+
+// Drukarnia: działania matematyczne osobno od zadań tekstowych w aplikacji.
+const PRINT_MATH_TOPICS = [
+    { id: 'addition', label: '➕ Dodawanie' }, { id: 'subtraction', label: '➖ Odejmowanie' },
+    { id: 'multiplication', label: '✖️ Mnożenie' }, { id: 'division', label: '➗ Dzielenie' }
+];
+const printerPureMath = () => printerConfig.subjects.length === 1 && printerConfig.subjects[0] === 'math';
+const printerNumberLimit = () => Number(printerConfig.maxNumber || (grade() === 1 ? 20 : grade() === 2 ? 100 : 1000));
+function printerMathOperations() {
+    const selected = (printerConfig.topics.math || []).filter(t => PRINT_MATH_TOPICS.some(v => v.id === t));
+    if (selected.length) return selected;
+    return grade() === 1 || grade() === 2 && stage() === 0 ? ['addition', 'subtraction'] :
+        grade() === 2 && stage() === 1 ? ['addition', 'subtraction', 'multiplication'] :
+        ['addition', 'subtraction', 'multiplication', 'division'];
+}
+function printerArithmetic(count, seed) {
+    // Deterministyczna losowość i brak powtarzania identycznych działań na jednej kartce.
+    let rngState = (seed >>> 0) || 123456789;
+    const random = () => { rngState ^= rngState << 13; rngState ^= rngState >>> 17; rngState ^= rngState << 5; return (rngState >>> 0) / 4294967296; };
+    const randInt = (lo, hi) => lo + Math.floor(random() * (Math.max(lo, hi) - lo + 1));
+    const ops = printerMathOperations(), limit = printerNumberLimit(), seen = new Set(), out = [];
+    const ceiling = printerConfig.level === 'review' ? Math.min(limit, 50) : limit;
+    // Dla dużych zestawów próbujemy każdą operację na zmianę.
+    for (let attempt = 0; out.length < count && attempt < Math.max(2000, count * 100); attempt++) {
+        const op = ops[attempt % ops.length]; let a, b, result, symbol;
+        if (op === 'addition') {
+            a = randInt(1, Math.max(2, ceiling - 1));
+            // Co kilka zadań łatwe dopełnianie dziesiątki (np. 45 + 5 =).
+            if (attempt % 5 === 0 && ceiling >= 20) {
+                a = randInt(1, Math.max(1, Math.floor((ceiling - 10) / 10))) * 10 + randInt(1, 9);
+                b = 10 - a % 10;
+            } else b = randInt(1, Math.max(1, ceiling - a));
+            result = a + b; symbol = '+';
+        } else if (op === 'subtraction') {
+            a = randInt(2, Math.max(2, ceiling)); b = randInt(1, a - 1);
+            result = a - b; symbol = '−';
+        } else if (op === 'multiplication' || op === 'division') {
+            const factorMax = printerConfig.level === 'review' ? 10 : printerConfig.level === 'challenge' ? 15 : 12;
+            a = randInt(1, factorMax); b = randInt(1, factorMax);
+            if (a * b > limit) continue;
+            if (op === 'multiplication') { result = a * b; symbol = '×'; }
+            else { result = b; b = a; a = result * a; symbol = '÷'; }
+        } else continue;
+        if (result > limit || a > limit || result < 0) continue;
+        const expression = `${a} ${symbol} ${b} =`;
+        if (seen.has(expression)) continue;
+        seen.add(expression);
+        out.push({ id: `print-math-${seed}-${out.length}`, subject: 'math', topic: op,
+            expression, question: { id: `print-math-${seed}-${out.length}`, type: 'number', prompt: expression, answer: result, skill: op } });
+    }
+    // Rozrzucamy działania równomiernie pomiędzy kolumnami.
+    for (let i = out.length - 1; i > 0; i--) { const j = randInt(0, i); [out[i], out[j]] = [out[j], out[i]]; }
+    return out;
+}
 function printerPaper(answerKey = false) {
     if (!printerQuestions.length) return '<div class="printer-paper printer-empty"><div class="big-emoji">🖨️</div><h2>Twoja karta pracy pojawi się tutaj</h2><p>Wybierz przedmiot i liczbę zadań, następnie kliknij „Przygotuj kartę”.</p></div>';
+    const pureMath = printerQuestions.every(item => item.subject === 'math' && typeof item.expression === 'string');
+    if (pureMath) {
+        const count = printerQuestions.length;
+        const columnsClass = count <= 24 ? 'math-cols-2' : count <= 60 ? 'math-cols-3' : 'math-cols-4';
+        const items = printerQuestions.map((item, i) =>
+            `<div class="math-task"><span class="math-task-number">${i + 1}.</span><span class="math-expression">${esc(item.expression)}</span>${answerKey ? `<span class="math-key-result">${item.question.answer}</span>` : '<span class="math-result-line"></span>'}</div>`
+        ).join('');
+        return `<div class="printer-paper math-compact"><div class="paper-info"><strong>Magiczna Kraina Nauki · Matematyka</strong><span>Klasa ${grade()} · ${esc(new Date().toLocaleDateString('pl-PL'))}</span></div><h2>${answerKey ? 'Klucz odpowiedzi' : 'Karta działań matematycznych'}</h2><div class="paper-name">Imię: ${answerKey ? esc(child.name) : '________________________'} &nbsp; Data: ______________</div><div class="math-sheet-grid ${columnsClass}">${items}</div><p class="paper-footnote">${count} działań · Zestaw ${printerVersion} · ${answerKey ? 'Odpowiedzi dla rodzica' : 'Wpisz wynik obok każdego działania'}</p></div>`;
+    }
+    // Pozostałe przedmioty zachowują pytania, treści do czytania i miejsce na odpowiedź.
     let previous = '';
     const questions = printerQuestions.map((item, i) => {
         const q = item.question;
@@ -1282,16 +1379,22 @@ function printerPaper(answerKey = false) {
         const choices = q.type === 'choice' ? `<ol type="A">${(q.options || []).map(x => `<li>☐ ${esc(x)}</li>`).join('')}</ol>` : '<div class="paper-answer-lines"></div>';
         return `<section class="paper-task">${context}<h3>${i + 1}. ${esc(q.prompt)}</h3>${answerKey ? `<p class="paper-key">✓ ${esc(expectedLabel(item))}</p>` : choices}</section>`;
     }).join('');
-    return `<div class="printer-paper"><div class="paper-info"><strong>🦊 Magiczna Kraina Nauki</strong><span>Klasa ${grade()} · ${esc(new Date().toLocaleDateString('pl-PL'))}</span></div><h2>${answerKey ? '🔑 Klucz odpowiedzi' : '🖨️ Moja karta pracy'}</h2><div class="paper-name">Imię: ${answerKey ? esc(child.name) : '________________________________'} &nbsp;&nbsp; Data: ______________</div><p>${answerKey ? 'Odpowiedzi dla rodzica. Zachowaj tę kartkę osobno.' : 'Rozwiąż zadania po kolei. Pracuj spokojnie, we własnym tempie.'}</p>${questions}<p class="paper-footnote">Magiczna Kraina Nauki · Zadania autorskie · ${printerQuestions.length} zadań · Zestaw nr ${printerVersion}</p></div>`;
+    return `<div class="printer-paper"><div class="paper-info"><strong>🦊 Magiczna Kraina Nauki</strong><span>Klasa ${grade()} · ${esc(new Date().toLocaleDateString('pl-PL'))}</span></div><h2>${answerKey ? '🔑 Klucz odpowiedzi' : '🖨️ Moja karta pracy'}</h2><div class="paper-name">Imię: ${answerKey ? esc(child.name) : '________________________________'} &nbsp;&nbsp; Data: ______________</div><p>${answerKey ? 'Odpowiedzi dla rodzica.' : 'Rozwiąż zadania po kolei.'}</p>${questions}<p class="paper-footnote">Magiczna Kraina Nauki · ${printerQuestions.length} zadań · Zestaw nr ${printerVersion}</p></div>`;
 }
 function printerView() {
-    const c = printerConfig;
-    return `<div class="page-title"><span class="eyebrow">🖨️ DRUKARNIA ZADAŃ</span><h1>Karty pracy do wydrukowania</h1><p>Wybierz matematykę, polski, angielski, przyrodę lub niemiecki. Możesz połączyć przedmioty, wydrukować czystą kartę albo osobny klucz odpowiedzi. Zapis do PDF znajdziesz w oknie drukowania.</p></div><div class="printer-layout"><div class="panel printer-controls"><div><h3>1. Przedmioty</h3><div class="printer-choice-grid">${ALL_SUBJECTS.map(s => `<button class="printer-chip printer-subject ${c.subjects.includes(s) ? 'on' : ''}" type="button" data-act="printer-subject" data-subject="${s}" aria-pressed="${c.subjects.includes(s)}">${subjectInfo[s].emoji} ${esc(subjectInfo[s].label)}</button>`).join('')}</div></div><div><h3>2. Tematy</h3><div class="printer-topic-box">${c.subjects.map(s => `<div><small>${subjectInfo[s].emoji} ${subjectInfo[s].label}</small><div class="printer-choice-grid" style="margin:8px 0 13px"><button type="button" class="printer-chip ${!(c.topics[s] || []).length ? 'on' : ''}" data-act="printer-topic" data-subject="${s}" data-topic="all">Wszystkie</button>${TOPICS[s].map(t => `<button class="printer-chip ${(c.topics[s] || []).includes(t.id) ? 'on' : ''}" type="button" data-act="printer-topic" data-subject="${s}" data-topic="${t.id}">${esc(t.label)}</button>`).join('')}</div></div>`).join('')}</div></div><div><h3>3. Liczba zadań</h3><div class="printer-choice-grid">${[5, 10, 15, 20, 30].map(n => `<button class="printer-chip ${c.count === n ? 'on' : ''}" type="button" data-act="printer-count" data-count="${n}">${n}</button>`).join('')}</div></div><div><h3>4. Poziom trudności</h3><div class="printer-choice-grid">${[{id:'review',title:'🌱 Powtórka'},{id:'current',title:'⭐ Bieżący'},{id:'challenge',title:'🚀 Wyzwanie'}].map(x=>`<button class="printer-chip ${c.level===x.id?'on':''}" type="button" data-act="printer-level" data-level="${x.id}">${x.title}</button>`).join('')}</div><p class="printer-tip">Dobór poziomu wpływa przede wszystkim na matematykę. Zadania uwzględniają klasę ${grade()} i bieżący etap nauki.</p></div><button class="btn btn-primary btn-large btn-block" data-act="printer-generate">✨ Przygotuj ${c.count} zadań</button></div><div class="panel printer-preview"><h2>Podgląd karty pracy</h2><p class="printer-tip">Karta nie zawiera prawidłowych odpowiedzi. Klucz drukuje się osobno.</p><div class="printer-action-bar"><button class="btn btn-primary" data-act="printer-print" ${!printerQuestions.length ? 'disabled' : ''}>🖨️ Drukuj zadania</button><button class="btn btn-outline" data-act="printer-key" ${!printerQuestions.length ? 'disabled' : ''}>🔑 Drukuj odpowiedzi</button></div>${printerPaper()}</div></div>`;
+    const c = printerConfig, mathOnly = printerPureMath();
+    const qty = mathOnly ? [20, 30, 40, 60, 80, 100, 120] : [5, 10, 15, 20, 30];
+    const headings = mathOnly ? 'Działania w jednej linijce, bez zadań tekstowych. Nawet 120 przykładów na jednej kartce A4.' : 'Zadania z wybranych przedmiotów. Dłuższe teksty mogą wymagać więcej stron.';
+    return `<div class="page-title"><span class="eyebrow">🖨️ DRUKARNIA ZADAŃ</span><h1>Karty pracy do wydrukowania</h1><p>${headings} Odpowiedzi drukują się osobno; w oknie drukowania można też zapisać PDF.</p></div><div class="printer-layout"><div class="panel printer-controls"><div><h3>1. Przedmioty</h3><div class="printer-choice-grid">${ALL_SUBJECTS.map(s => `<button class="printer-chip printer-subject ${c.subjects.includes(s) ? 'on' : ''}" type="button" data-act="printer-subject" data-subject="${s}" aria-pressed="${c.subjects.includes(s)}">${subjectInfo[s].emoji} ${esc(subjectInfo[s].label)}</button>`).join('')}</div></div><div><h3>2. Tematy</h3><div class="printer-topic-box">${c.subjects.map(s => `<div><small>${subjectInfo[s].emoji} ${subjectInfo[s].label}</small><div class="printer-choice-grid" style="margin:8px 0 13px"><button type="button" class="printer-chip ${!(c.topics[s] || []).length ? 'on' : ''}" data-act="printer-topic" data-subject="${s}" data-topic="all">Wszystkie</button>${(s === 'math' ? PRINT_MATH_TOPICS : TOPICS[s]).map(t => `<button class="printer-chip ${(c.topics[s] || []).includes(t.id) ? 'on' : ''}" type="button" data-act="printer-topic" data-subject="${s}" data-topic="${t.id}">${esc(t.label)}</button>`).join('')}</div></div>`).join('')}</div></div><div><h3>3. Liczba zadań</h3><div class="printer-choice-grid">${qty.map(n => `<button class="printer-chip ${c.count === n ? 'on' : ''}" type="button" data-act="printer-count" data-count="${n}">${n}</button>`).join('')}</div></div>${mathOnly ? `<div><h3>4. Zakres liczb</h3><div class="printer-choice-grid">${[20, 50, 100, 1000].map(n => `<button class="printer-chip ${printerNumberLimit() === n ? 'on' : ''}" type="button" data-act="printer-max" data-max="${n}">do ${n}</button>`).join('')}</div><p class="printer-tip">Np. 45 + 5 = ____ · 62 − 17 = ____</p></div>` : ''}<div><h3>${mathOnly ? '5' : '4'}. Poziom trudności</h3><div class="printer-choice-grid">${[{id:'review',title:'🌱 Powtórka'},{id:'current',title:'⭐ Bieżący'},{id:'challenge',title:'🚀 Wyzwanie'}].map(x=>`<button class="printer-chip ${c.level===x.id?'on':''}" type="button" data-act="printer-level" data-level="${x.id}">${x.title}</button>`).join('')}</div></div>${mathOnly ? '<div class="printer-mode-note">📄 Tryb oszczędny: krótki nagłówek, 3–4 kolumny, same działania. Zaprojektowany na jedną stronę A4.</div>' : ''}<button class="btn btn-primary btn-large btn-block" data-act="printer-generate">✨ Przygotuj ${c.count} zadań</button></div><div class="panel printer-preview"><h2>Podgląd karty pracy</h2><p class="printer-tip">${mathOnly ? 'Tak będzie wyglądał wydruk A4. Wpisz wynik w puste miejsce.' : 'Karta nie zawiera prawidłowych odpowiedzi. Klucz drukuje się osobno.'}</p><div class="printer-action-bar"><button class="btn btn-primary" data-act="printer-print" ${!printerQuestions.length ? 'disabled' : ''}>🖨️ Drukuj zadania</button><button class="btn btn-outline" data-act="printer-key" ${!printerQuestions.length ? 'disabled' : ''}>🔑 Drukuj odpowiedzi</button></div>${printerPaper()}</div></div>`;
 }
 function printerGenerate() {
-    printerQuestions = createExam(printerConfig, grade(), stage(), Date.now() + ++printerVersion);
+    if (printerPureMath()) printerQuestions = printerArithmetic(printerConfig.count, (Date.now() + ++printerVersion) >>> 0);
+    else {
+        const config = { ...printerConfig, count: Math.min(30, printerConfig.count) };
+        printerQuestions = createExam(config, grade(), stage(), Date.now() + ++printerVersion);
+    }
     if (!printerQuestions.length) message('Dla tego wyboru brakuje pytań. Wybierz inne tematy.');
-    else if (printerQuestions.length < printerConfig.count) message(`Udało się wybrać ${printerQuestions.length} różnych pytań dla tych tematów.`);
+    else if (printerQuestions.length < printerConfig.count) message(`Dla tego zakresu powstało ${printerQuestions.length} różnych działań. Możesz wybrać większy zakres liczb.`);
     render(true);
 }
 function printerPrint(answers = false) {
@@ -1693,18 +1796,22 @@ async function handleAction(btnEl) {
         const sub = btnEl.dataset.subject, pick = new Set(printerConfig.subjects);
         if (pick.has(sub)) { if (pick.size === 1) { message('Zostaw co najmniej jeden przedmiot.'); return; } pick.delete(sub); }
         else if (ALL_SUBJECTS.includes(sub)) pick.add(sub);
-        printerConfig.subjects = ALL_SUBJECTS.filter(x => pick.has(x)); printerQuestions = []; render(true); return;
+        printerConfig.subjects = ALL_SUBJECTS.filter(x => pick.has(x)); printerConfig.count = printerPureMath() ? 80 : 10; printerQuestions = []; render(true); return;
     }
     if (a === 'printer-topic') {
         const sub = btnEl.dataset.subject, topic = btnEl.dataset.topic;
         if (!TOPICS[sub]) return;
         const cur = new Set(printerConfig.topics[sub] || []);
-        if (topic === 'all') cur.clear(); else if (cur.has(topic)) cur.delete(topic); else if (TOPICS[sub].some(t => t.id === topic)) cur.add(topic);
+        if (topic === 'all') cur.clear(); else if (cur.has(topic)) cur.delete(topic); else if ((sub === 'math' ? PRINT_MATH_TOPICS : TOPICS[sub]).some(t => t.id === topic)) cur.add(topic);
         printerConfig.topics[sub] = [...cur]; printerQuestions = []; render(true); return;
     }
     if (a === 'printer-count') {
-        const n = Number(btnEl.dataset.count); if (![5,10,15,20,30].includes(n)) return;
+        const n = Number(btnEl.dataset.count); if (!(printerPureMath() ? [20,30,40,60,80,100,120] : [5,10,15,20,30]).includes(n)) return;
         printerConfig.count = n; printerQuestions = []; render(true); return;
+    }
+    if (a === 'printer-max') {
+        const max = Number(btnEl.dataset.max); if (![20,50,100,1000].includes(max)) return;
+        printerConfig.maxNumber = max; printerQuestions = []; render(true); return;
     }
     if (a === 'printer-level') {
         if (!['review','current','challenge'].includes(btnEl.dataset.level)) return;
